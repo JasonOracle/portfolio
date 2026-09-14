@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>刘亚楠 · AI-Native 前端工程师 — 作品集</title>
+<meta name="description" content="刘亚楠，9 年前端，AI-Native 全栈方向。tiku 独立开发者、iOS 上架、AI 小程序百万营收。">
+<style>
+  :root{
+    --ink:#f2f7fb; --ink-2:rgba(226,238,247,.72); --ink-3:rgba(226,238,247,.45);
+    --glass:rgba(255,255,255,.07); --glass-strong:rgba(255,255,255,.11);
+    --line:rgba(255,255,255,.14); --accent:#4fd1c5; --accent2:#63b3ed;
+    --radius:20px; --radius-sm:14px;
+    --font:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",system-ui,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--ink);line-height:1.75;background:#07222e;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+
+  /* 深海渐变 + 光斑 */
+  .bg{position:fixed;inset:0;z-index:0;background:
+    radial-gradient(120% 90% at 85% -10%,#0b3a4a 0%,transparent 55%),
+    radial-gradient(100% 80% at -10% 30%,#0a2f52 0%,transparent 50%),
+    radial-gradient(90% 90% at 70% 110%,#0a4438 0%,transparent 55%),
+    #07222e}
+  .orb{position:fixed;border-radius:50%;filter:blur(70px);opacity:.35;pointer-events:none;z-index:0}
+  .orb.a{width:38vw;height:38vw;background:#1a7f8f;top:-14vw;right:-10vw;animation:drift 22s ease-in-out infinite alternate}
+  .orb.b{width:30vw;height:30vw;background:#1b5fa8;bottom:-8vw;left:-8vw;animation:drift 26s ease-in-out infinite alternate-reverse}
+  .orb.c{width:18vw;height:18vw;background:#188066;top:52%;left:60%;animation:drift 30s ease-in-out infinite alternate}
+  @keyframes drift{to{transform:translate(6vw,4vh) scale(1.08)}}
+
+  header{position:sticky;top:0;z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px;
+    margin:12px auto 0;padding:0 22px;max-width:1016px;border-radius:16px;
+    background:rgba(10,30,40,.5);backdrop-filter:blur(18px);border:1px solid var(--line)}
+  .brand{font-weight:700;font-size:15px;letter-spacing:.04em}
+  .brand span{color:var(--accent)}
+  .nav ul{display:flex;gap:22px;list-style:none}
+  .nav ul a{font-size:13.5px;color:var(--ink-2);transition:color .2s}
+  .nav ul a:hover{color:var(--accent)}
+
+  .hero{padding:88px 0 64px;text-align:left;max-width:860px}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2);
+    background:var(--glass);border:1px solid var(--line);border-radius:980px;padding:7px 16px;backdrop-filter:blur(12px)}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:pulse 2s infinite}
+  @keyframes pulse{50%{opacity:.4}}
+  h1{font-size:clamp(32px,5.8vw,54px);line-height:1.22;font-weight:700;margin:24px 0 18px;letter-spacing:-.01em}
+  h1 .grad{background:linear-gradient(92deg,var(--accent) 10%,var(--accent2) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .lead{font-size:clamp(15.5px,2.2vw,18px);color:var(--ink-2);max-width:660px}
+  .cta-row{display:flex;gap:13px;margin-top:32px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:980px;font-size:14.5px;font-weight:600;transition:transform .18s,box-shadow .18s,background .18s;backdrop-filter:blur(10px)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.primary{background:linear-gradient(92deg,var(--accent),var(--accent2));color:#05242b;box-shadow:0 10px 30px rgba(79,209,197,.25)}
+  .btn.ghost{border:1px solid var(--line);background:var(--glass);color:var(--ink)}
+  .btn.ghost:hover{background:var(--glass-strong)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
+  .stat{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius-sm);padding:20px;backdrop-filter:blur(14px)}
+  .stat b{display:block;font-size:clamp(20px,3vw,27px);font-weight:700;background:linear-gradient(92deg,#fff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:12px;color:var(--ink-2)}
+
+  section{padding:66px 0}
+  h2{font-size:clamp(23px,3.8vw,32px);font-weight:700;margin-bottom:8px}
+  .sec-sub{color:var(--ink-3);font-size:14px;margin-bottom:34px}
+
+  .works{display:flex;flex-direction:column;gap:18px}
+  .work{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;backdrop-filter:blur(16px);transition:transform .22s,box-shadow .22s,border-color .22s}
+  .work:hover{transform:translateY(-4px);border-color:rgba(79,209,197,.4);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .work .txt{padding:30px 30px 26px}
+  .work .txt h3{font-size:clamp(18px,2.8vw,23px);font-weight:700;margin-bottom:10px}
+  .work .txt p{font-size:14px;color:var(--ink-2)}
+  .work ul{list-style:none;margin-top:14px}
+  .work li{font-size:13.5px;color:var(--ink-2);padding-left:19px;position:relative;margin-top:6px}
+  .work li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:linear-gradient(120deg,var(--accent),var(--accent2))}
+  .work li.hot{color:var(--ink);font-weight:600}
+  .work .viz{padding:30px 26px;display:flex;flex-direction:column;justify-content:center;gap:10px;background:rgba(4,20,28,.35);border-left:1px solid var(--line)}
+  .shotrow{display:flex;gap:12px;padding:22px;background:rgba(4,20,28,.35);border-left:1px solid var(--line);align-items:flex-start}
+  .shotrow figure{flex:1;margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.04);transition:transform .2s,border-color .2s}
+  .shotrow figure:hover{transform:translateY(-4px);border-color:rgba(79,209,197,.5)}
+  .shotrow img{width:100%;display:block}
+  .wrow{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed rgba(255,255,255,.08);padding-bottom:9px}
+  .wrow b{color:var(--accent);font-weight:600;white-space:nowrap}
+  .wrow.full{border:none;padding-bottom:0;flex-direction:column;gap:7px}
+  .wbar{height:6px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden}
+  .wbar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .work .links{margin-top:16px;display:flex;gap:16px;flex-wrap:wrap}
+  .work .links a{font-size:13px;font-weight:600;color:var(--accent)}
+  .work .links a:hover{text-decoration:underline}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .mini{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius-sm);padding:22px;backdrop-filter:blur(12px);transition:transform .2s,background .2s}
+  .mini:hover{transform:translateY(-3px);background:var(--glass-strong)}
+  .mini h4{font-size:15px;font-weight:600;margin-bottom:6px}
+  .mini p{font-size:12.5px;color:var(--ink-2)}
+  .mini .m{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:12px}
+  .mini .m b{color:var(--accent);font-weight:600}
+  .mini .m a{color:var(--accent);text-decoration:none;font-weight:600}
+  .mini .m a:hover{text-decoration:underline}
+  .mini.gimg{padding:14px 14px 18px}
+  .mini.gimg img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--line);margin-bottom:12px;display:block;background:rgba(255,255,255,.05)}
+  .mini.gimg h4{margin-bottom:4px}
+  .mini.gimg p{font-size:12.5px}
+
+  .tl{position:relative;padding-left:26px;border-left:1px solid var(--line);max-width:780px}
+  .tl-item{position:relative;padding-bottom:34px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-31px;top:7px;width:10px;height:10px;border-radius:50%;background:linear-gradient(120deg,var(--accent),var(--accent2));box-shadow:0 0 12px rgba(79,209,197,.5)}
+  .tl-item .time{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+  .tl-item h4{font-size:16.5px;font-weight:600;margin:3px 0 4px}
+  .tl-item p{font-size:13.5px;color:var(--ink-2)}
+
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .sk{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius-sm);padding:22px 24px;backdrop-filter:blur(12px)}
+  .sk.wide{grid-column:span 2;border-color:rgba(79,209,197,.35);background:linear-gradient(120deg,rgba(79,209,197,.1),var(--glass))}
+  .sk h4{font-size:14.5px;font-weight:600;margin-bottom:8px}
+  .sk p{font-size:13px;color:var(--ink-2)}
+
+  footer{padding:70px 0 46px;margin-top:30px}
+  .contact-card{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);backdrop-filter:blur(18px);padding:44px 40px;text-align:center}
+  .contact-card h2{margin-bottom:6px}
+  .contact-card .sub{color:var(--ink-2);font-size:14.5px;margin-bottom:26px}
+  footer .fine{margin-top:26px;text-align:center;font-size:12px;color:var(--ink-3)}
+  footer .fine a{color:var(--accent)}
+
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .rv.in{opacity:1;transform:none}
+
+  .style-switch{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:column;gap:8px}
+  .style-switch a{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:rgba(10,30,40,.6);border:1px solid var(--line);backdrop-filter:blur(10px);color:var(--ink-2);font-size:13px;transition:all .15s}
+  .style-switch a:hover{color:var(--accent);border-color:var(--accent)}
+
+  @media(max-width:820px){
+    .hero{padding:60px 0 44px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .work{grid-template-columns:1fr}
+    .work .viz{border-left:none;border-top:1px solid var(--line)}
+    .grid{grid-template-columns:1fr 1fr}
+    .skills{grid-template-columns:1fr}.sk.wide{grid-column:span 1}
+    .nav ul{display:none}
+  }
+  @media(max-width:520px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">刘亚楠<span>.</span>dev</a>
+    <ul>
+      <li><a href="#works">作品</a></li>
+      <li><a href="#more">项目</a></li>
+      <li><a href="#exp">经历</a></li>
+      <li><a href="#skills">技能</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <div class="hero">
+    <span class="pill"><span class="dot"></span>AI-Native 全栈 · 正在找工作（武汉）</span>
+    <h1>9 年前端，<br>把 AI <span class="grad">做成产品</span>的人。</h1>
+    <p class="lead">从 10 个月百万营收的 AI 写作小程序，到 3 个月上架 App Store 的 AI 巡店应用，再到独立交付的 AI 测评 SaaS 与 AI 智能客服两套云端全栈作品——每一件都可在线验证。</p>
+    <div class="cta-row">
+      <a class="btn primary" href="https://tiku-toc-new.pages.dev/#/" target="_blank" rel="noopener">体验智题库 →</a>
+      <a class="btn ghost" href="https://github.com/JasonOracle" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn ghost" href="#contact">联系我</a>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><b>9 年</b><span>前端开发经验</span></div>
+      <div class="stat"><b>¥100 万+</b><span>AI 项目营收 / 10 个月</span></div>
+      <div class="stat"><b>10+ 款</b><span>小程序与 APP 上架</span></div>
+      <div class="stat"><b>2 套</b><span>独立全栈 · 云端交付</span></div>
+    </div>
+  </div>
+
+  <section id="works">
+    <h2>精选作品</h2>
+    <p class="sec-sub">四个代表作，覆盖 AI 全栈、App 上架与商业验证</p>
+    <div class="works">
+
+      <div class="work rv">
+        <div class="txt">
+          <h3>智题库 TiKu · AI-Native 多租户测评 SaaS</h3>
+          <p>独立开发：B 端管理大屏 + C 端移动测评 + FastAPI 后端三端闭环，v1.0 → v1.5 完整演进并全链路上云。</p>
+          <ul>
+            <li>主观题 AI 阅卷：全托管 / 预批改双模式，失败自动降级人工</li>
+            <li>RAG 命题：私有文档切片检索 + 向量召回 + 原文溯源高亮</li>
+            <li>多租户隔离、RBAC、AI 额度资产化、服务端防作弊防泄题</li>
+            <li class="hot">pytest 47 项全绿 + 35 项断言 e2e 直测线上服务</li>
+          </ul>
+          <div class="links">
+            <a href="https://tiku-toc-new.pages.dev/#/" target="_blank" rel="noopener">在线 Demo ↗</a>
+            <a href="https://github.com/JasonOracle/tiku" target="_blank" rel="noopener">源码 ↗</a>
+          </div>
+        </div>
+        <div class="shotrow">
+          <figure><img src="assets/img/tiku-home.webp" alt="智题库 C 端首页" loading="lazy"></figure>
+          <figure><img src="assets/img/tiku-exam.webp" alt="在线答题页" loading="lazy"></figure>
+          <figure><img src="assets/img/tiku-report.webp" alt="AI 阅卷报告页" loading="lazy"></figure>
+        </div>
+      </div>
+
+      <div class="work rv">
+        <div class="txt">
+          <h3>aiservice · 企业级 AI 智能客服系统</h3>
+          <p>独立开发：Next.js 16 + FastAPI + TiDB Cloud 全栈闭环，TOC / TOB 双端分离，docker-compose 一键部署，已上线公网。</p>
+          <ul>
+            <li>独创「AI 负责效率，人工负责责任」双层托管状态机</li>
+            <li>多模态 Vision 识图辅助售后应答（服饰 / 母婴 / 3C）</li>
+            <li>细粒度 RAG 检索加权 + 全双工 WebSocket 长连接</li>
+            <li class="hot">AI 自主应答 → 低置信度自动转人工接管</li>
+          </ul>
+          <div class="links">
+            <a href="https://aiservice-toc.pages.dev" target="_blank" rel="noopener">在线体验 ↗</a>
+            <a href="https://github.com/JasonOracle/aiservice" target="_blank" rel="noopener">源码 ↗</a>
+          </div>
+        </div>
+        <div class="shotrow">
+          <figure><img src="assets/img/aisvc-tob.webp" alt="AI 客服 B 端工作台总览" loading="lazy"></figure>
+          <figure><img src="assets/img/aisvc-m1.webp" alt="AI 客服移动端首页" loading="lazy"></figure>
+          <figure><img src="assets/img/aisvc-handoff.webp" alt="AI 转人工接管界面" loading="lazy"></figure>
+        </div>
+      </div>
+
+      <div class="work rv">
+        <div class="txt">
+          <h3>中焙智能 App · iOS 从 0 到 1 上架</h3>
+          <p>公司 SaaS 仅有 PC 版、无 App 先例，作为唯一多端上架经验者入职：制定软著 / 域名备案 / AI 功能审核合规的上架方案，3 个月交付。</p>
+          <ul>
+            <li>技术选型与项目骨架：uni-app + Vue3 + uview-plus + Pinia</li>
+            <li>AI 巡店、智能培训、待办、消息模块与 AI 聊天主体</li>
+            <li>视频播放器叠加动态文字：render.js + AI 辅助攻坚</li>
+            <li class="hot">MCP 数据安全网关与设计图 Skill 还原工程提案</li>
+          </ul>
+          <div class="links"><a href="https://apps.apple.com/cn/app/id6775407976" target="_blank" rel="noopener">App Store 页面 ↗</a></div>
+        </div>
+        <div class="shotrow">
+          <figure><img src="assets/img/zbzn-zhix.webp" alt="中焙智能 App 在线考试" loading="lazy"></figure>
+          <figure><img src="assets/img/zbzn-patrol.webp" alt="中焙智能 App 巡店" loading="lazy"></figure>
+          <figure><img src="assets/img/zbzn-ai.webp" alt="中焙智能 App AI 点检" loading="lazy"></figure>
+        </div>
+      </div>
+
+      <div class="work rv">
+        <div class="txt">
+          <h3>倍进 AI 写作助手 · 百万营收 AI 矩阵</h3>
+          <p>4 人核心小组前端负责人，兼部分产品职责：基于火山引擎大模型的智能办公工具，微信 / 抖音小程序 + H5 + 安卓 APP 全渠道覆盖。</p>
+          <ul>
+            <li>onChunkReceived 流式逐字打印、PPT 跨端上传兼容方案</li>
+            <li>Puppeteer 简历截图、录音识别会议纪要、PDF 摘要</li>
+            <li>会员制 + 按次扣费混合变现，多 appid 打包矩阵</li>
+            <li class="hot">10 个月营收突破 100 万元 · 登上央视新闻报道</li>
+          </ul>
+        </div>
+        <div class="shotrow">
+          <figure><img src="assets/img/aiwriter-1.webp" alt="AI 写作助手小程序首页" loading="lazy"></figure>
+          <figure><img src="assets/img/aiwriter-app-5.webp" alt="安卓 APP 分类页" loading="lazy"></figure>
+          <figure><img src="assets/img/aiwriter-app-1.webp" alt="安卓 APP 首页" loading="lazy"></figure>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="more">
+    <h2>更多项目</h2>
+    <p class="sec-sub">教育赛道九年沉淀的多端产品群</p>
+    <div class="grid rv">
+      <div class="mini gimg"><img src="assets/img/xuetang-1.webp" alt="倍进学堂" loading="lazy"><h4>倍进学堂 · 多端学习助手</h4><p>语数英全学科，学习星任务与商城兑换闭环；另上架安卓 APP。</p><div class="m"><a href="https://app.mi.com/details?id=com.beijinxuetang.beijin" target="_blank" rel="noopener">小米商店 ↗</a> / <a href="https://sj.qq.com/appdetail/com.beijinxuetang.beijin" target="_blank" rel="noopener">应用宝 ↗</a> 可查</div></div>
+      <div class="mini gimg"><img src="assets/img/cq-1.webp" alt="倍进成长圈" loading="lazy"><h4>倍进成长圈 · 学习社区</h4><p>WebSocket 实时聊天、社区与互动玩法体系，打通学习星商城经济闭环。</p><div class="m">注册用户 <b>1000 万+</b> · 帖子 <b>53 万+</b></div></div>
+      <div class="mini gimg"><img src="assets/img/tbyy-1.webp" alt="同步学英语" loading="lazy"><h4>同步学英语</h4><p>正版教材点读、AI 系统学闯关、勋章体系，主导 3 次大型改版。</p><div class="m">2022.02 - 2025.02</div></div>
+      <div class="mini gimg"><img src="assets/img/mbti-4.webp" alt="MBTI 测评报告" loading="lazy"><h4>MBTI 人格测试</h4><p>3 套专业题库 + 霍兰德职业测试，ECharts 维度可视化报告闭环。</p><div class="m">2024.02 - 2025.03</div></div>
+      <div class="mini gimg"><img src="assets/img/zuowen-1.webp" alt="倍进作文" loading="lazy"><h4>倍进作文 · AI 陪练写作</h4><p>AI 五步引导写作、智能批改润色、范文素材双库。</p><div class="m"><b>50 万+</b> 学生在用</div></div>
+      <div class="mini gimg"><img src="assets/img/yuwen-1.webp" alt="小学语文同步学习助手" loading="lazy"><h4>小学语文同步学习助手</h4><p>人教统编版课文点读、朗读评测、字帖生成。</p><div class="m">点读 / 评测 / 字帖</div></div>
+      <div class="mini gimg"><img src="assets/img/ziliaoku-1.webp" alt="倍进资料库" loading="lazy"><h4>倍进资料库</h4><p>同步资料库：AI 生成试卷、分类检索、下载上传积分体系。</p><div class="m">语 / 数 / 英 全科</div></div>
+      <div class="mini gimg"><img src="assets/img/jiaozuoye-1.webp" alt="交作业助手" loading="lazy"><h4>交作业助手</h4><p>教师/学生双端：AI 优化布置、班级管理、提交率看板。</p><div class="m">2022.01 - 2022.04</div></div>
+      <div class="mini gimg"><img src="assets/img/jiayuan-1.webp" alt="倍进家校评测助手" loading="lazy"><h4>倍进家校评测助手</h4><p>基于心理学理论：66+ 测评工具、亲子共测、成长追踪可视化。</p><div class="m">大五人格 · 成长曲线</div></div>
+      <div class="mini gimg"><img src="assets/img/airesume-1.webp" alt="得优 AI 简历助手" loading="lazy"><h4>得优 AI 简历助手</h4><p>精选模板一键建简历，Puppeteer 截图保多端视觉一致。</p><div class="m">AI 写作矩阵产品线</div></div>
+      <div class="mini gimg"><img src="assets/img/jrmall-1.webp" alt="假日小队商城小程序" loading="lazy"><h4>假日小队 · 官方商城</h4><p>H5 重构小程序、支付分销闭环、分包策略与请求拦截器。</p><div class="m">微信小程序 · 2018 - 2021 · <b>亲子活动电商</b></div></div>
+      <div class="mini gimg"><img src="assets/img/jiari-web.webp" alt="假日小队官网 PC 版" loading="lazy"><h4>假日小队 · 企业官网</h4><p>PC + 移动端官网与响应式适配，上线后获公司内部表彰。</p><div class="m">PC 版 + 移动端 · <a href="https://jiarixiaodui.com" target="_blank" rel="noopener">jiarixiaodui.com ↗</a></div></div>
+      <div class="mini gimg"><img src="assets/img/yd360-1.webp" alt="营地360官网首页" loading="lazy"><h4>营地360 · 营地教育服务平台</h4><p>面向营地教育行业的综合服务平台：课程商城、活动报名、营地入驻申请全流程。</p><div class="m"><a href="https://www.yingdi360.com" target="_blank" rel="noopener">www.yingdi360.com ↗</a></div></div>
+      <div class="mini gimg"><img src="assets/img/jiari-app-1.webp" alt="假日伙伴 APP" loading="lazy"><h4>假日伙伴 · 双端 APP</h4><p>uni-app 打包双端 APP：定点打卡、任务考核、薪资结算、个推 SDK。</p><div class="m">已上架应用商店（2018）</div></div>
+      <div class="mini gimg"><img src="assets/img/jrrecruit-1.webp" alt="假日伙伴招募" loading="lazy"><h4>假日伙伴招募 H5</h4><p>营地导师招募移动端：活动/职位浏览、申请与进度跟踪。</p><div class="m">uni-app 双端同源 · <a href="https://jrhb.jiarixiaodui.com/" target="_blank" rel="noopener">在线访问 ↗</a></div></div>
+      <div class="mini gimg"><img src="assets/img/chuti-1.webp" alt="出题答题助手首页" loading="lazy"><h4>出题答题助手</h4><p>火山引擎 AI 智能出题 + 出题/刷题双模式 + 付费题库，题库使用率提升 10%+。</p><div class="m">2022.02 - 2022.04</div></div>
+      <div class="mini gimg"><img src="assets/img/glby-1.webp" alt="公路养护智慧管控大屏" loading="lazy"><h4>公路养护系统 ×2</h4><p>高德地图打点、海量点聚合与 PQI/RQI 指标联动的综合管控大屏。</p><div class="m">2021.06 - 2021.11</div></div>
+      <div class="mini gimg"><img src="assets/img/haiba-1.webp" alt="小白海拔检测仪" loading="lazy"><h4>小白海拔检测仪</h4><p>GPS + 传感器仪表盘：实时海拔、经纬度、方位角、速度与倾角，暗色仪表 UI。</p><div class="m">个人实验 · <b>已上线</b></div></div>
+      <div class="mini gimg"><img src="assets/img/xiutu-1.webp" alt="拇指修图" loading="lazy"><h4>拇指修图</h4><p>Canvas 滤镜实时预览、强度调节、多格式导出，「分享加次数」裂变机制。</p><div class="m">个人实验 · <b>已上线</b></div></div>
+      <div class="mini gimg"><img src="assets/img/faxing-1.webp" alt="千面测发型 AI 配发师" loading="lazy"><h4>千面测发型 · AI 配发师</h4><p>腾讯云函数 + 腾讯混元生图：人脸发型试戴、对比海报生成；个人主体限 AI 类目，完成至体验版。</p><div class="m">混元生图 · 云函数</div></div>
+      <div class="mini gimg"><img src="assets/img/ereader-2.webp" alt="EReader-MVP 桌面阅读器 2.0 首页" loading="lazy"><h4>EReader-MVP · 桌面阅读器</h4><p>Vue3 + Electron 极简电子书阅读器，首个 AI 辅助开发实践：AGENTS.md / 结构化文档驱动协作范式。</p><div class="m"><a href="https://github.com/JasonOracle/EReader-MVP" target="_blank" rel="noopener" style="color:var(--accent)">GitHub ↗</a></div></div>
+      <div class="mini"><h4>agnes-2.5-flash-mcp · MCP Server</h4><p>发布到 PyPI 的 MCP 服务器：接入 Agnes 2.5-flash 图像 / 视频生成，供 Claude 等 AI Agent 标准化调用。</p><div class="m"><a href="https://pypi.org/project/agnes-2.5-flash-mcp/" target="_blank" rel="noopener" style="color:var(--accent)">PyPI ↗</a> · <a href="https://github.com/JasonOracle/agnes-2.5-flash-mcp" target="_blank" rel="noopener" style="color:var(--accent)">GitHub ↗</a></div></div>
+      <div class="mini"><h4>Agent Skill 与 AI 内容实验</h4><p>agnes-scroll-world：一键生成「无限滚动运镜」网页的 Agent Skill；lol-scroll-video：英雄联盟海克斯主题落地页，素材 100% AI 生成。</p><div class="m"><a href="https://github.com/JasonOracle/agnes-scroll-world" target="_blank" rel="noopener" style="color:var(--accent)">Skill ↗</a> · <a href="https://github.com/JasonOracle/lol-scroll-video" target="_blank" rel="noopener" style="color:var(--accent)">Demo ↗</a></div></div>
+    </div>
+  </section>
+
+  <section id="exp">
+    <h2>工作经历</h2>
+    <p class="sec-sub">从教育赛道到 AI-Native 的完整路径</p>
+    <div class="tl rv">
+      <div class="tl-item"><div class="time">2026.03 - 2026.06</div><h4>中焙智能 · 前端（App 方向）</h4><p>SaaS App 化 0→1，3 个月完成 iOS 上架；uni-app 选型、骨架搭建与核心模块开发。</p></div>
+      <div class="tl-item"><div class="time">2021.12 - 2025.03</div><h4>倍进教育 · 前端 → AI 项目前端负责人</h4><p>教育多端产品矩阵核心前端；AI 写作助手 10 个月营收百万、登上央视报道。</p></div>
+      <div class="tl-item"><div class="time">2021.03 - 2021.10</div><h4>中交国通 · 前端工程师</h4><p>高德地图 + ECharts 公路养护可视化；独立搭建青岛高速项目前端框架。</p></div>
+      <div class="tl-item"><div class="time">2017.10 - 2021.03</div><h4>皓石教育 · 前端工程师</h4><p>微信商城 / 小程序 / 官网 / 双端 APP；主导商城小程序化并双商店上架。</p></div>
+      <div class="tl-item"><div class="time">2025.04 - 2026.02</div><h4>阶段性休整 · AI 工具链自驱学习</h4><p>家庭原因主动暂缓；自建 Hermes Agent 私有环境（Debian + Docker + 微信 Bot + mem0）。</p></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>技能栈</h2>
+    <p class="sec-sub">当前主线：AI 工程化</p>
+    <div class="skills rv">
+      <div class="sk wide"><h4>◈ AI 工程化</h4><p>大模型 API 集成（火山引擎 / SenseNova）· 流式输出 · RAG 命题链路 · AI 阅卷评分引擎 · Claude Code / OpenCode 多模型协作 · MCP 协议开发 · Skill 体系 · Hermes Agent 自托管（微信 Bot / mem0 / 子任务派发）</p></div>
+      <div class="sk"><h4>前端核心</h4><p>JavaScript ES6+ · CSS3 · Vue2/Vue3 全家桶（Vuex / Pinia / Router / Vite）· 性能优化（首屏 / 分包 / 缓存 / 字体子集化）</p></div>
+      <div class="sk"><h4>跨端与上架</h4><p>uni-app 多端深度实战 · 条件编译 · 软著 / 域名备案 / iOS App Store 与安卓商店上架全流程</p></div>
+      <div class="sk"><h4>UI 与可视化</h4><p>Vant · uView · Element Plus · Ant Design Vue · ECharts · 高德地图 API · 大屏可视化</p></div>
+      <div class="sk"><h4>后端与工程</h4><p>FastAPI（tiku 实战）· Node.js + Express · Docker · Linux / Debian 运维 · Git / SVN · TiDB Cloud</p></div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="contact-card rv">
+      <h2>一起做点有 AI 的东西？</h2>
+      <p class="sub">求职意向：武汉 · 前端开发 / AI 应用开发。所有作品可在线验证，源码开源。</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn primary" href="mailto:liuyn2017@qq.com">liuyn2017@qq.com</a>
+        <a class="btn ghost" href="https://github.com/JasonOracle" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn ghost" href="https://tiku-toc-new.pages.dev/#/" target="_blank" rel="noopener">智题库 Demo ↗</a>
+      </div>
+    </div>
+    <p class="fine">© 2026 刘亚楠 · glassmorphism edition · <a href="index.html">风格入口</a> / <a href="light.html">浅色版</a> / <a href="dark.html">深色版</a></p>
+  </footer>
+</main>
+
+<nav class="style-switch">
+  <a href="index.html" title="风格入口">☰</a>
+  <a href="light.html" title="浅色版">◑</a>
+  <a href="dark.html" title="深色版">⌘</a>
+</nav>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), {threshold:.1});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+<style>
+/* ---- lightbox ---- */
+#lb{position:fixed;inset:0;z-index:999;background:rgba(4,10,18,.93);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+#lb[hidden]{display:none}
+.lb-stage{position:relative;display:flex;flex-direction:column;align-items:center;max-width:88vw}
+.lb-stage img{max-width:88vw;max-height:78vh;width:auto;height:auto;border-radius:14px;box-shadow:0 30px 90px rgba(0,209,255,.18),0 30px 80px rgba(0,0,0,.6);user-select:none;-webkit-user-drag:none;transition:opacity .25s}
+#lb-link{margin-top:12px;font:500 13px/1 var(--font);color:#6fe3ff;text-decoration:none}
+#lb-link:hover{text-decoration:underline}
+.lb-x{position:fixed;top:18px;right:22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:18px;cursor:pointer;transition:background .2s}
+.lb-prev,.lb-next{position:fixed;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:26px;line-height:1;cursor:pointer;transition:background .2s}
+.lb-x:hover,.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.22)}
+.lb-prev{left:16px}.lb-next{right:16px}
+.lb-meta{position:fixed;bottom:22px;left:0;right:0;text-align:center;color:#aebfd0;font:13px/1.5 var(--font);pointer-events:none}
+.lb-meta b{color:#fff;font-weight:600;margin-right:12px}
+.mini{cursor:zoom-in;position:relative}
+.shotrow figure{cursor:zoom-in}
+.lb-badge{position:absolute;top:12px;right:12px;background:rgba(0,209,255,.14);color:#8deaff;border:1px solid rgba(0,209,255,.35);font-size:11px;font-weight:500;padding:2px 9px;border-radius:20px;backdrop-filter:blur(6px);pointer-events:none;z-index:2}
+@media(max-width:640px){.lb-prev{left:8px}.lb-next{right:8px}.lb-prev,.lb-next{width:38px;height:38px}}
+</style>
+<div id="lb" hidden>
+  <button class="lb-x" aria-label="关闭">✕</button>
+  <button class="lb-prev" aria-label="上一张">‹</button>
+  <div class="lb-stage"><img id="lb-img" alt="项目截图预览"><a id="lb-link" target="_blank" rel="noopener" hidden>在线地址 ↗</a></div>
+  <button class="lb-next" aria-label="下一张">›</button>
+  <div class="lb-meta"><b id="lb-title"></b><span id="lb-count"></span></div>
+</div>
+<script>
+(function(){
+var A='assets/img/';
+var G={
+ tiku:{t:'智题库 TiKu — 三端 AI 测评平台',i:['tiku-home.webp','tiku-exam.webp','tiku-report.webp','tiku-tob.webp','tiku-ai.webp'],link:'https://tiku-toc-new.pages.dev/#/'},
+ aisvc:{t:'aiservice — 企业级 AI 智能客服系统（独立全栈）',i:['aisvc-tob.webp','aisvc-m1.webp','aisvc-handoff.webp','aisvc-pc.webp','aisvc-m2.webp'],link:'https://aiservice-toc.pages.dev'},
+ aiwriter:{t:'倍进 AI 写作助手 — 小程序 + APP 矩阵 · 10 个月百万营收',i:['aiwriter-1.webp','aiwriter-2.webp','aiwriter-3.webp','aiwriter-app-1.webp','aiwriter-app-2.webp','aiwriter-app-3.webp','aiwriter-app-4.webp','aiwriter-app-5.webp']},
+ haiba:{t:'小白海拔检测仪 — GPS 传感器工具小程序',i:['haiba-1.webp']},
+ xiutu:{t:'拇指修图 — Canvas 图像处理小程序',i:['xiutu-1.webp']},
+ faxing:{t:'千面测发型 — 腾讯云函数 + 混元生图',i:['faxing-1.webp','faxing-2.webp','faxing-3.webp']},
+ glby:{t:'公路养护智慧管控大屏 ×2',i:['glby-1.webp']},
+ chuti:{t:'出题答题助手 — 火山引擎 AI 出题 · 出题/刷题双模式小程序',i:['chuti-1.webp','chuti-2.webp','chuti-3.webp','chuti-4.webp','chuti-5.webp','chuti-6.webp']},
+ zbzn:{t:'中焙智能 App — iOS 从 0 到 1 上架',i:['zbzn-zhix.webp','zbzn-learn.webp','zbzn-patrol.webp','zbzn-home.webp','zbzn-ai.webp'],link:'https://apps.apple.com/cn/app/id6775407976'},
+ xuetang:{t:'倍进学堂 · 多端学习助手',i:['xuetang-1.webp','xuetang-2.webp','xuetang-3.webp','xuetang-4.webp','xuetang-5.webp','xuetang-appstore.webp'],link:'https://app.mi.com/details?id=com.beijinxuetang.beijin'},
+ cq:{t:'倍进成长圈 · 学习社区',i:['cq-1.webp','cq-2.webp','cq-3.webp','cq-4.webp']},
+ tbyy:{t:'同步学英语',i:['tbyy-1.webp','tbyy-2.webp','tbyy-3.webp','tbyy-4.webp']},
+ mbti:{t:'MBTI 人格测试助手',i:['mbti-1.webp','mbti-2.webp','mbti-3.webp','mbti-4.webp']},
+ zuowen:{t:'倍进作文 · AI 陪练写作',i:['zuowen-1.webp','zuowen-2.webp','zuowen-3.webp','zuowen-4.webp']},
+ yuwen:{t:'小学语文同步学习助手',i:['yuwen-1.webp','yuwen-2.webp','yuwen-3.webp','yuwen-4.webp']},
+ ziliaoku:{t:'倍进资料库',i:['ziliaoku-1.webp','ziliaoku-2.webp','ziliaoku-3.webp','ziliaoku-4.webp']},
+ jiaozuoye:{t:'交作业助手',i:['jiaozuoye-1.webp','jiaozuoye-2.webp','jiaozuoye-3.webp','jiaozuoye-4.webp']},
+ jiayuan:{t:'倍进家校评测助手',i:['jiayuan-1.webp']},
+ airesume:{t:'得优 AI 简历助手',i:['airesume-1.webp']},
+ jrmall:{t:'假日小队 · 官方商城小程序（微信小程序，无独立链接）',i:['jrmall-1.webp','jrmall-2.webp','jrmall-3.webp','jrmall-4.webp','jrmall-5.webp']},
+ 'jiari-web':{t:'假日小队 · 企业官网',i:['jiari-web.webp','jiari-m-1.webp'],link:'https://jiarixiaodui.com'},
+ jrrecruit:{t:'假日伙伴招募 H5（可在线访问）',i:['jrrecruit-1.webp'],link:'https://jrhb.jiarixiaodui.com/'},
+ yd360:{t:'营地360 · 营地教育综合服务平台',i:['yd360-1.webp','yd360-2.webp','yd360-3.webp','yd360-4.webp'],link:'https://www.yingdi360.com'},
+ 'jiari-app':{t:'假日伙伴 · 双端 APP',i:['jiari-app-1.webp','jiari-app-2.webp','jiari-app-3.webp']},
+ ereader:{t:'EReader-MVP — Vue3 + Electron 桌面阅读器（AI 辅助开发实践）',i:['ereader-2.webp','ereader-3.webp','ereader-1.webp'],link:'https://github.com/JasonOracle/EReader-MVP'}
+};
+var KEYS=Object.keys(G).concat(['jiari-m']).sort(function(a,b){return b.length-a.length});
+var lb=document.getElementById('lb'),img=document.getElementById('lb-img'),
+    ttl=document.getElementById('lb-title'),cnt=document.getElementById('lb-count'),lnk=document.getElementById('lb-link'),
+    bPrev=lb.querySelector('.lb-prev'),bNext=lb.querySelector('.lb-next');
+var cur=null,idx=0;
+function resolve(src){
+  var f=(src||'').split('/').pop();
+  for(var i=0;i<KEYS.length;i++){var k=KEYS[i];if(f.indexOf(k)===0)return G[k==='jiari-m'?'jiari-web':k];}
+  return null;
+}
+function show(n){
+  var L=cur.i.length;idx=(n+L)%L;
+  img.style.opacity=0;
+  img.onload=function(){img.style.opacity=1};
+  img.src=A+cur.i[idx];
+  [1,-1].forEach(function(d){new Image().src=A+cur.i[(idx+d+L)%L]});
+  cnt.textContent=(idx+1)+' / '+L;
+  var multi=L>1;
+  bPrev.style.display=multi?'':'none';bNext.style.display=multi?'':'none';
+  if(cur.link){lnk.href=cur.link;lnk.hidden=false}else{lnk.hidden=true}
+}
+function open(g,n){cur=g;ttl.textContent=g.t;show(n||0);lb.hidden=false;document.body.style.overflow='hidden'}
+function close(){lb.hidden=true;document.body.style.overflow='';img.src=''}
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a');
+  var card=e.target.closest('.pimg,.gcard,.mini,figure');
+  if(!card)return;
+  if(a&&a!==card&&card.contains(a))return;
+  var im=card.querySelector('img');if(!im)return;
+  var g=resolve(im.getAttribute('src'));if(!g)return;
+  e.preventDefault();
+  var n=0;
+  if(card.tagName==='FIGURE'){n=g.i.indexOf(im.getAttribute('src').split('/').pop());if(n<0)n=0}
+  open(g,n);
+});
+lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-stage'))close()});
+lb.querySelector('.lb-x').addEventListener('click',close);
+bPrev.addEventListener('click',function(){show(idx-1)});
+bNext.addEventListener('click',function(){show(idx+1)});
+document.addEventListener('keydown',function(e){
+  if(lb.hidden)return;
+  if(e.key==='Escape')close();
+  else if(e.key==='ArrowLeft')show(idx-1);
+  else if(e.key==='ArrowRight')show(idx+1);
+});
+var tx=0;
+lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)show(idx+(dx<0?1:-1))},{passive:true});
+document.querySelectorAll('.pimg,.gcard,.mini').forEach(function(c){
+  var im=c.querySelector('img');if(!im)return;
+  var g=resolve(im.getAttribute('src'));if(!g||g.i.length<2)return;
+  var b=document.createElement('span');b.className='lb-badge';b.textContent=g.i.length+' 图';c.appendChild(b);
+});
+})();
+</script>
+</body>
+</html>

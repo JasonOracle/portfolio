@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>刘亚楠 · 作品集入口 — 选择你的阅读风格</title>
+<meta name="description" content="刘亚楠，9 年前端，AI-Native 全栈方向。作品集提供三种视觉风格版本。">
+<style>
+  :root{
+    --bg:#f6f6f4; --ink:#191919; --ink-2:#63635e; --ink-3:#9b9b95;
+    --line:rgba(0,0,0,.1); --accent:#191919;
+    --font:"PingFang SC","HarmonyOS Sans SC","Source Han Sans SC","Microsoft YaHei",system-ui,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;width:100%}
+
+  .top{padding:60px 0 44px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--mono);font-size:13px;color:var(--ink-3);letter-spacing:.06em}
+  .brand b{color:var(--ink);font-weight:600}
+  .top .links{display:flex;gap:18px;font-size:13px;color:var(--ink-2)}
+  .top .links a:hover{color:var(--ink);text-decoration:underline}
+
+  .head{padding:26px 0 54px}
+  h1{font-size:clamp(30px,5.4vw,50px);line-height:1.2;font-weight:700;letter-spacing:-.01em;max-width:720px}
+  .head p{margin-top:18px;font-size:16px;color:var(--ink-2);max-width:620px}
+  .head .meta{margin-top:14px;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
+
+  .styles{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding-bottom:56px}
+  .style-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+  .style-card:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.1)}
+  .preview{height:150px;position:relative;overflow:hidden}
+  .preview .dot-nav{position:absolute;top:12px;left:14px;display:flex;gap:5px}
+  .preview .dot-nav i{width:7px;height:7px;border-radius:50%;opacity:.5}
+  .preview .fake-h{position:absolute;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+  .preview .fake-bar{position:absolute;border-radius:4px}
+
+  /* 浅色版预览 */
+  .pv-light{background:#fbfbfd}
+  .pv-light .dot-nav i{background:#d5d5da}
+  .pv-light .fake-h{color:#1d1d1f;top:44px;left:14px;font-size:21px}
+  .pv-light .fake-h em{font-style:normal;color:#0071e3}
+  .pv-light .b1{background:linear-gradient(135deg,#cfe3f7,#e9eef4);right:-24px;top:26px;width:96px;height:96px;border-radius:14px;transform:rotate(6deg)}
+  .pv-light .b2{background:#fff;border:1px solid rgba(0,0,0,.08);right:30px;top:78px;width:110px;height:44px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.06)}
+
+  /* 深色版预览 */
+  .pv-dark{background:#0a0e14;background-image:linear-gradient(rgba(61,220,132,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(61,220,132,.05) 1px,transparent 1px);background-size:20px 20px}
+  .pv-dark .dot-nav i{background:#2a3a4d}
+  .pv-dark .fake-h{color:#d8e2ee;top:40px;left:14px;font-family:ui-monospace,Menlo,monospace;font-weight:500;font-size:15px}
+  .pv-dark .fake-h b{color:#3ddc84;font-weight:600}
+  .pv-dark .b1{background:#111823;border:1px solid #1e2a3a;right:16px;top:24px;width:118px;height:92px;border-radius:8px}
+  .pv-dark .b2{background:#3ddc84;right:26px;top:36px;width:56px;height:9px;border-radius:3px;opacity:.85}
+
+  /* 玻璃版预览 */
+  .pv-glass{background:radial-gradient(120% 100% at 80% 0%,#0b3a4a 0%,#07222e 60%)}
+  .pv-glass::after{content:"";position:absolute;width:110px;height:110px;border-radius:50%;background:#1a7f8f;filter:blur(34px);top:-20px;right:-14px;opacity:.6}
+  .pv-glass .dot-nav i{background:rgba(255,255,255,.25)}
+  .pv-glass .fake-h{color:#f2f7fb;top:40px;left:14px;font-size:19px}
+  .pv-glass .fake-h em{font-style:normal;background:linear-gradient(92deg,#4fd1c5,#63b3ed);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .pv-glass .b1{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);right:20px;top:64px;width:126px;height:52px;border-radius:14px}
+
+  .style-card .info{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .style-card .info h3{font-size:16.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .style-card .info h3 span{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);border:1px solid var(--line);border-radius:5px;padding:1px 7px;font-weight:400}
+  .style-card .info p{font-size:13px;color:var(--ink-2);flex:1}
+  .style-card .go{margin-top:12px;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:gap .18s}
+  .style-card:hover .go{gap:10px}
+  .sc-light .go{color:#0071e3}.sc-dark .go{color:#0e9f5c}.sc-glass .go{color:#0e8f86}.sc-apple .go{color:#1d1d1f}
+
+  /* Apple 版预览 */
+  .pv-apple{background:#f5f5f7}
+  .pv-apple::before{content:"";position:absolute;top:0;left:0;right:0;height:26px;background:rgba(255,255,255,.75);backdrop-filter:blur(6px);box-shadow:inset 0 -1px 0 rgba(0,0,0,.06)}
+  .pv-apple .dot-nav i{background:#d5d5da}
+  .pv-apple .fake-h{color:#1d1d1f;top:48px;left:14px;font-size:22px;letter-spacing:-.022em}
+  .pv-apple .fake-h em{font-style:normal;color:#0071e3}
+  .pv-apple .b1{background:#0071e3;right:22px;top:64px;width:96px;height:32px;border-radius:980px}
+  .pv-apple .b2{background:#fff;border:1px solid rgba(0,0,0,.08);right:130px;top:64px;width:78px;height:32px;border-radius:980px;box-shadow:0 6px 16px rgba(0,0,0,.06)}
+
+  .footnote{border-top:1px solid var(--line);padding:26px 0 40px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3)}
+  .footnote a{color:var(--ink-2)}
+  .footnote a:hover{color:var(--ink);text-decoration:underline}
+
+  @media(max-width:760px){.styles{grid-template-columns:1fr}.top{padding-top:36px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand"><b>刘亚楠</b> · portfolio-hub</div>
+    <div class="links">
+      <a href="https://github.com/JasonOracle" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://tiku-toc-new.pages.dev/#/" target="_blank" rel="noopener">智题库 Demo ↗</a>
+      <a href="mailto:liuyn2017@qq.com">liuyn2017@qq.com</a>
+    </div>
+  </div>
+
+  <div class="head">
+    <h1>同一份履历，<br>四种阅读方式。</h1>
+    <p>我是刘亚楠，9 年前端、AI-Native 全栈方向：独立交付过 FastAPI + Vue3 + uni-app 三端 AI 测评 SaaS，3 个月把 SaaS 系统带上 App Store，做过 10 个月营收百万的 AI 写作小程序。</p>
+    <div class="meta">9 年经验 · 10+ 款小程序/APP 上架 · ¥100 万+ AI 项目营收 · 武汉</div>
+  </div>
+
+  <div class="styles">
+    <a class="style-card sc-apple" href="apple.html">
+      <div class="preview pv-apple">
+        <div class="dot-nav"><i></i><i></i><i></i></div>
+        <div class="fake-h">把 AI 做进<br>产品里<em>。</em></div>
+        <div class="fake-bar b1"></div><div class="fake-bar b2"></div>
+      </div>
+      <div class="info">
+        <h3>Apple 版 <span>apple-design</span></h3>
+        <p>系统字体 + 光学字距、半透明悬浮导航、即时按压反馈，对 Reduced Motion / Transparency / Contrast 全量适配。细节控与设计师面前的一张牌。</p>
+        <span class="go">进入 Apple 版 →</span>
+      </div>
+    </a>
+
+    <a class="style-card sc-light" href="light.html">
+      <div class="preview pv-light">
+        <div class="dot-nav"><i></i><i></i><i></i></div>
+        <div class="fake-h">把 AI 做进<br>产品里<em>。</em></div>
+        <div class="fake-bar b1"></div><div class="fake-bar b2"></div>
+      </div>
+      <div class="info">
+        <h3>浅色版 <span>apple-editorial</span></h3>
+        <p>冷钛白底盘 + 漫反射微光，大字排版。稳重专业，适合投递给 HR 与管理岗的第一印象。</p>
+        <span class="go">进入浅色版 →</span>
+      </div>
+    </a>
+
+    <a class="style-card sc-dark" href="dark.html">
+      <div class="preview pv-dark">
+        <div class="dot-nav"><i></i><i></i><i></i></div>
+        <div class="fake-h"><b>$</b> whoami → liu-yanan</div>
+        <div class="fake-bar b1"></div><div class="fake-bar b2"></div>
+      </div>
+      <div class="info">
+        <h3>深色版 <span>dark-terminal</span></h3>
+        <p>终端美学 + git log 式履历。给技术负责人看的版本，工程气质拉满。</p>
+        <span class="go">进入深色版 →</span>
+      </div>
+    </a>
+
+    <a class="style-card sc-glass" href="glass.html">
+      <div class="preview pv-glass">
+        <div class="dot-nav"><i></i><i></i><i></i></div>
+        <div class="fake-h">把 AI <em>做成产品</em></div>
+        <div class="fake-bar b1"></div>
+      </div>
+      <div class="info">
+        <h3>玻璃拟态版 <span>ai-glass</span></h3>
+        <p>深海渐变 + 毛玻璃卡片 + 数据可视化条。AI 感最强的版本，适合 AI 方向岗位。</p>
+        <span class="go">进入玻璃版 →</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="footnote">
+    <span>© 2026 刘亚楠 · 纯静态实现（HTML/CSS/JS），响应式适配移动端</span>
+    <span><a href="https://github.com/JasonOracle/tiku" target="_blank" rel="noopener">tiku 源码</a> · <a href="https://apps.apple.com/cn/app/id6775407976" target="_blank" rel="noopener">中焙智能 App</a> · <a href="mailto:liuyn2017@qq.com">联系我</a></span>
+  </div>
+</div>
+</body>
+</html>
