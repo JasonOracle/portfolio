@@ -2,7 +2,7 @@
 
 9 年前端 · AI-Native 全栈的个人作品集。纯静态实现（HTML / CSS / 原生 JS），无构建步骤，响应式适配移动端。
 
-**在线访问**：部署于 Cloudflare Pages（见下方部署说明）
+**在线访问**：[https://portfolio-bwz.pages.dev](https://portfolio-bwz.pages.dev) · Cloudflare Pages
 
 ## 页面结构
 
