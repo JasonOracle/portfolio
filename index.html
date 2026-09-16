@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<!--
+  [变更日志]
+  修改时间：2026-09-16
+  AI模型：CodeBuddy / GLM
+  修改内容：1. 「近期项目」模块样式优化：.rhero 去厚重左色条改为浅蓝渐变底 + hover 浮起；.rcard 移除紫色左边条(#7F77DD)统一回主色 #0071e3，hover 收敛为浮起 + tint 阴影 + 边框变色；卡片图像 hover 微缩放；GitHub 链接推齐卡片底部；补充 prefers-reduced-motion 静态兜底（方案先在 copy.html 验证后合入）
+-->
+<!--
+  [变更日志]
+  修改时间：2026-09-16
+  AI模型：CodeBuddy / GLM
+  修改内容：2. 「技能栈」文案按本人真实技能清单重写：补充 Java 科班背景、jQuery、React 自学无实战、快应用提审经历、公众号 H5 支付、上架被打回实战、Ollama 本地模型部署、Codex / Antigravity IDE、Obsidian 知识库等，按「熟练 / 自学 / 暂无实战」诚实分层；3. 经本人确认 AI 客服项目为其所写，前端核心卡片补回「Next.js 16 (App Router) 有全栈项目实战」
+-->
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -118,29 +130,34 @@
   .badge-gold{display:inline-block;font-size:11px;font-weight:700;color:#7a5600;background:linear-gradient(135deg,#ffeeb8,#ffd76e);border:1px solid #e3c469;border-radius:999px;padding:3px 11px;margin-left:8px;vertical-align:2px;white-space:nowrap}
   .card.hl{background:linear-gradient(135deg,#f2f7ff,#fbfbfd);border-color:rgba(0,113,227,.18)}
 
-  /* 近期项目 */
-  .rhero{display:flex;gap:22px;background:linear-gradient(135deg,#f2f7ff,#fbfbfd);border:1px solid rgba(0,113,227,.18);border-left:3px solid var(--accent);border-radius:var(--radius);padding:20px;margin-bottom:14px}
-  .rhero figure{flex:0 0 40%;margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff}
-  .rhero figure img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  /* 近期项目（统一主色 / hover 提层 / 图像微交互） */
+  .rhero{display:flex;gap:24px;background:linear-gradient(135deg,#f3f8ff,#fbfbfd 62%);border:1px solid rgba(0,113,227,.16);border-radius:var(--radius);padding:20px;margin-bottom:14px;transition:transform .25s ease,box-shadow .25s ease}
+  .rhero:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,113,227,.10)}
+  .rhero figure{flex:0 0 40%;margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 10px 26px rgba(0,0,0,.05)}
+  .rhero figure img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s ease}
+  .rhero:hover figure img{transform:scale(1.03)}
   .rbody{flex:1;min-width:0}
-  .rbody h4{font-size:19px;font-weight:600;margin-bottom:6px}
+  .rbody h4{font-size:19px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em}
   .rbody .sub{font-size:13.5px;color:var(--ink-2);margin-bottom:12px}
   .rpts{list-style:none;padding:0;margin:0 0 12px}
   .rpts li{font-size:13px;color:var(--ink-2);padding-left:16px;position:relative;margin-bottom:5px;line-height:1.55}
-  .rpts li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .rpts li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.75}
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-  .chips span{font-size:11.5px;color:var(--ink-2);background:rgba(0,113,227,.07);border:1px solid rgba(0,113,227,.12);border-radius:99px;padding:3px 9px;font-family:ui-monospace,Menlo,monospace}
+  .chips span{font-size:11.5px;color:var(--ink-2);background:rgba(0,113,227,.06);border:1px solid rgba(0,113,227,.14);border-radius:99px;padding:3px 9px;font-family:ui-monospace,Menlo,monospace;transition:background .2s,border-color .2s}
+  .chips span:hover{background:rgba(0,113,227,.12);border-color:rgba(0,113,227,.28)}
   .rgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .rcard{background:var(--surface);border:1px solid var(--line);border-left:3px solid #7F77DD;border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
-  .rcard:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.07)}
+  .rcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .rcard:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,113,227,.10);border-color:rgba(0,113,227,.22)}
   .rcard figure{margin:0 0 12px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#f2f2f5}
-  .rcard figure img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block}
-  .rcard h4{font-size:16px;font-weight:600;margin-bottom:5px}
+  .rcard figure img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block;transition:transform .5s ease}
+  .rcard:hover figure img{transform:scale(1.04)}
+  .rcard h4{font-size:16px;font-weight:600;margin-bottom:5px;letter-spacing:-.01em}
   .rcard .sub{font-size:13px;color:var(--ink-2);margin-bottom:10px}
+  .rcard>p:last-of-type,.rcard.wide .rtext>p:last-of-type{margin-top:auto;padding-top:10px}
   .rcard.wide{grid-column:span 2;flex-direction:row;gap:18px;align-items:flex-start}
   .rcard.wide figure{flex:0 0 32%;margin-bottom:0}
   .rcard.wide figure img{aspect-ratio:16/10}
-  .rcard.wide .rtext{flex:1;min-width:0}
+  .rcard.wide .rtext{flex:1;min-width:0;display:flex;flex-direction:column}
   .sec-note{font-size:12.5px;color:var(--ink-3);font-family:ui-monospace,Menlo,monospace}
 
   /* 时间线 */
@@ -195,6 +212,10 @@
     .skill.ai{grid-column:span 1}
     .nav ul{display:none}
   }
+  @media (prefers-reduced-motion: reduce){
+    .rhero,.rcard,.rhero figure img,.rcard figure img,.chips span{transition:none}
+    .rhero:hover,.rcard:hover{transform:none}
+  }
 </style>
 </head>
 <body>
@@ -202,7 +223,7 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top">LIU<em>·</em>YN</a>
+    <a class="brand" href="#top">Jason<em>·</em>作品集</a>
     <ul>
       <li><a href="#works">精选作品</a></li>
       <li><a href="#recent">近期项目</a></li>
@@ -465,11 +486,11 @@
     <section id="skills">
       <div class="sec-head"><h2>技能栈</h2></div>
       <div class="skills rv">
-        <div class="skill ai"><h4><i></i>AI 工程化（当前主线）</h4><p>大模型 API 集成（火山引擎 / SenseNova）、流式输出（SSE / onChunkReceived）、RAG 命题链路、AI 阅卷与评分引擎；Claude Code / OpenCode 多模型协作工作流、MCP 协议开发、Skill 体系、Hermes Agent 自托管（Debian + Docker + 微信 Bot + mem0 记忆）。</p></div>
-        <div class="skill"><h4><i></i>前端核心</h4><p>JavaScript (ES6+) / CSS3 / HTML5；Vue2 / Vue3 全家桶（Vuex · Pinia · Router · Vite）；Next.js 16 (App Router)；了解 React；性能优化（首屏、分包、缓存、字体子集化）。</p></div>
-        <div class="skill"><h4><i></i>跨端与上架</h4><p>uni-app 多端深度实战（微信 / 抖音小程序、H5、APP）；软著申请、域名备案、iOS App Store 与安卓商店上架全流程、AI 功能审核合规。</p></div>
-        <div class="skill"><h4><i></i>UI 与可视化</h4><p>Vant / uView / Element Plus / Ant Design Vue / ECharts / 高德地图 API；复杂表单、大屏数据可视化、移动端手势适配。</p></div>
-        <div class="skill"><h4><i></i>后端与工程</h4><p>Node.js + Express 基础服务；FastAPI 实战（tiku / aiservice 双项目）；Git / SVN；Docker 部署与 docker-compose 编排；Linux（Debian）自建服务器运维。</p></div>
+        <div class="skill ai"><h4><i></i>AI 工程化（当前主线）</h4><p>具备 AI 时代产品从 0 到 1 的完整搭建能力：大模型 API 集成（DeepSeek/GML）、流式输出（SSE / onChunkReceived）、RAG 命题链路、AI 阅卷与评分引擎；熟练使用 Claude Code / Codex / Antigravity IDE 等 Agent 工作流，会装 Skill、也能开发 Skill 与 MCP；本地模型部署（Ollama 下载部署运行开源模型）；Hermes Agent 自托管（Debian + Docker + 微信 Bot + mem0 记忆），并用 Obsidian 搭建个人知识库驱动日常学习。</p></div>
+        <div class="skill"><h4><i></i>前端核心</h4><p>计算机科班出身（大学 Java 方向，初级到中级），毕业后转向前端：HTML5 / CSS3 / JavaScript / jQuery 扎实，日常主力 Vue2 / Vue3 全家桶（Vuex · Pinia · Router · Vite）熟练使用；Next.js 16 (App Router) 有全栈项目实战（AI 客服系统）；React 系统自学过，暂无独立生产项目实战；关注性能优化（首屏、分包、缓存、字体子集化）。</p></div>
+        <div class="skill"><h4><i></i>跨端与上架</h4><p>uni-app 多端深度实战：经常开发微信小程序，上架过抖音小程序与安卓 APP；H5 公众号开发，接口支付 / 微信支付闭环有实战经验；App 上架全流程亲历者：软著申请、域名注册、应用商店注册，以及多次被打回再提审的完整实战经验；自学过快应用并完成提审（未过审，后搁置）。</p></div>
+        <div class="skill"><h4><i></i>UI 与可视化</h4><p>数据大屏与可视化项目经验：ECharts 各类图表展示与指标联动、高德地图 API 接入（动态标点、海量点聚合）；Vant / uView / Element Plus / Ant Design Vue 组件库；复杂表单与移动端手势适配。</p></div>
+        <div class="skill"><h4><i></i>后端与工程</h4><p>Node.js + Express（自学）：经常使用，会连接数据库独立写接口；FastAPI 实战（智题库 / AI 客服双项目）；Python 了解基础，会用 Ollama 部署本地模型；Linux 基础使用：自托管 Debian 主机，跑 Hermes 私人助手与小型项目；Git / SVN、Docker 部署与 docker-compose 编排。</p></div>
       </div>
     </section>
   </div>
