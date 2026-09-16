@@ -104,6 +104,10 @@
   .card p{font-size:13px;color:var(--ink-2)}
   .card .meta{font-size:11.5px;color:var(--ink-3);margin-top:12px;font-family:ui-monospace,Menlo,monospace}
   .card.w3{grid-column:span 3}.card.w2{grid-column:span 2}.card.w6{grid-column:span 6}
+  .card.w6.win{display:flex;gap:20px;align-items:stretch;padding:16px;background:linear-gradient(135deg,#fffcf3,#fdfbf5);border-color:#ead9ad}
+  .card.w6.win .thumb{width:320px;flex:none;aspect-ratio:auto;height:auto;margin-bottom:0;border-radius:12px}
+  .card.w6.win .win-body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:4px 4px 4px 0}
+  .badge-gold{display:inline-block;font-size:11px;font-weight:700;color:#7a5600;background:linear-gradient(135deg,#ffeeb8,#ffd76e);border:1px solid #e3c469;border-radius:999px;padding:3px 11px;margin-left:8px;vertical-align:2px;white-space:nowrap}
   .card.hl{background:linear-gradient(135deg,#f2f7ff,#fbfbfd);border-color:rgba(0,113,227,.18)}
 
   /* 近期项目 */
@@ -170,6 +174,8 @@
     .feature:nth-of-type(even) .panel{order:-1}
     .bento{grid-template-columns:repeat(2,1fr)}
     .card.w3,.card.w2,.card.w6{grid-column:span 2}
+    .card.w6.win{flex-direction:column}
+    .card.w6.win .thumb{width:100%}
     .rhero{flex-direction:column;gap:14px}
     .rhero figure{flex:none}
     .rhero figure img{aspect-ratio:16/10}
@@ -390,9 +396,9 @@
     <section id="more" style="padding-top:20px">
       <div class="sec-head"><h2>更多项目</h2></div>
       <div class="bento rv">
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/xuetang-1.webp" alt="倍进学堂小程序" loading="lazy"><h4>倍进学堂 · 多端学习助手</h4><p>Vue2 + uni-app 全生命周期迭代，学习星任务体系与商城兑换闭环；另上架安卓 APP。</p><div class="meta">2021.10 - 2025.03 · <a class="lnk" href="https://app.mi.com/details?id=com.beijinxuetang.beijin" target="_blank" rel="noopener">小米商店 ↗</a> · <a class="lnk" href="https://sj.qq.com/appdetail/com.beijinxuetang.beijin" target="_blank" rel="noopener">应用宝 ↗</a></div></div>
+        <div class="card w6 win pimg"><img class="thumb" src="assets/img/xuetang-6.webp" alt="倍进学堂安卓 APP" loading="lazy"><div class="win-body"><h4>倍进学堂 · 小程序 + 安卓 APP 双端<span class="badge-gold">累计营收千万级</span></h4><p>Vue2 + uni-app 全生命周期迭代 4 年：小程序端「学习星」任务体系与商城兑换闭环；安卓 APP 同步持续迭代，小米商店、应用宝等各大应用商店可搜可下。</p><div class="meta">2021.10 - 2025.03 · <a class="lnk" href="https://app.mi.com/details?id=com.beijinxuetang.beijin" target="_blank" rel="noopener">小米商店 ↗</a> · <a class="lnk" href="https://sj.qq.com/appdetail/com.beijinxuetang.beijin" target="_blank" rel="noopener">应用宝 ↗</a></div></div></div>
         <div class="card w2 pimg"><img class="thumb" src="assets/img/cq-1.webp" alt="倍进成长圈社区" loading="lazy"><h4>倍进成长圈 · 学习社区</h4><p>WebSocket 实时聊天、社区体系、互动玩法闭环，打通学习星商城经济。</p><div class="meta">注册用户 1000 万+ · 帖子 53 万+</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/tbyy-1.webp" alt="同步学英语" loading="lazy"><h4>同步学英语</h4><p>正版教材点读 + AI 系统学闯关路径，AI 互动学、勋章体系，主导 3 次大型改版。</p><div class="meta">2022.02 - 2025.02</div></div>
+        <div class="card w6 win pimg"><img class="thumb" src="assets/img/tbyy-1.webp" alt="同步学英语" loading="lazy"><div class="win-body"><h4>同步学英语<span class="badge-gold">累计营收千万级</span></h4><p>方直科技正版教材点读 + AI 系统学闯关路径、AI 互动学、勋章体系；主导 3 次大型界面改版，三年长期迭代支撑商业化持续增长。</p><div class="meta">2022.02 - 2025.02 · 微信小程序</div></div></div>
         <div class="card w2 pimg"><img class="thumb" src="assets/img/mbti-4.webp" alt="MBTI 测评报告" loading="lazy"><h4>MBTI 人格测试</h4><p>3 套专业题库 + 霍兰德职业测试，ECharts 人格维度可视化报告闭环。</p><div class="meta">2024.02 - 2025.03</div></div>
         <div class="card w2 pimg"><img class="thumb" src="assets/img/zuowen-1.webp" alt="倍进作文" loading="lazy"><h4>倍进作文 · AI 陪练写作</h4><p>AI 五步引导写作（审题/立意/素材/框架）、智能批改纠错润色、范文库素材库。</p><div class="meta">50 万+ 学生在用</div></div>
         <div class="card w2 pimg"><img class="thumb" src="assets/img/yuwen-1.webp" alt="小学语文同步学习助手" loading="lazy"><h4>小学语文同步学习助手</h4><p>人教统编版课文点读、朗读评测、专项课程与字帖生成工具。</p><div class="meta">点读 / 评测 / 字帖</div></div>
@@ -516,9 +522,9 @@ var G={
  faxing:{t:'千面测发型 — 腾讯云函数 + 混元生图',i:['faxing-1.webp','faxing-2.webp','faxing-3.webp']},
  glby:{t:'公路养护智慧管控大屏 ×2',i:['glby-1.webp']},
  zbzn:{t:'武汉某智能科技公司 App — iOS 从 0 到 1 上架',i:['zbzn-zhix.webp','zbzn-learn.webp','zbzn-patrol.webp','zbzn-home.webp','zbzn-ai.webp'],link:'https://apps.apple.com/cn/app/id6775407976'},
- xuetang:{t:'倍进学堂 · 多端学习助手',i:['xuetang-1.webp','xuetang-2.webp','xuetang-3.webp','xuetang-4.webp','xuetang-5.webp','xuetang-appstore.webp'],link:'https://app.mi.com/details?id=com.beijinxuetang.beijin'},
+ xuetang:{t:'倍进学堂 · 小程序 + 安卓 APP 双端（累计营收千万级）',i:['xuetang-6.webp','xuetang-7.webp','xuetang-8.webp','xuetang-9.webp','xuetang-10.webp','xuetang-1.webp','xuetang-2.webp','xuetang-3.webp','xuetang-4.webp','xuetang-5.webp','xuetang-appstore.webp'],link:'https://app.mi.com/details?id=com.beijinxuetang.beijin'},
  cq:{t:'倍进成长圈 · 学习社区',i:['cq-1.webp','cq-2.webp','cq-3.webp','cq-4.webp']},
- tbyy:{t:'同步学英语',i:['tbyy-1.webp','tbyy-2.webp','tbyy-3.webp','tbyy-4.webp']},
+ tbyy:{t:'同步学英语（累计营收千万级）',i:['tbyy-1.webp','tbyy-2.webp','tbyy-3.webp','tbyy-4.webp']},
  mbti:{t:'MBTI 人格测试助手',i:['mbti-1.webp','mbti-2.webp','mbti-3.webp','mbti-4.webp']},
  zuowen:{t:'倍进作文 · AI 陪练写作',i:['zuowen-1.webp','zuowen-2.webp','zuowen-3.webp','zuowen-4.webp']},
  yuwen:{t:'小学语文同步学习助手',i:['yuwen-1.webp','yuwen-2.webp','yuwen-3.webp','yuwen-4.webp']},
