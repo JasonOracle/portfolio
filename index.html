@@ -95,7 +95,7 @@
 
   /* 更多项目 bento */
   .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:22px;transition:transform .2s,box-shadow .2s}
+  .card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:22px;transition:transform .2s,box-shadow .2s}
   .card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.07)}
   .card.pimg{padding:14px 14px 18px}
   .card .thumb{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--line);margin-bottom:12px;display:block;background:#f2f2f5}
@@ -104,9 +104,17 @@
   .card p{font-size:13px;color:var(--ink-2)}
   .card .meta{font-size:11.5px;color:var(--ink-3);margin-top:12px;font-family:ui-monospace,Menlo,monospace}
   .card.w3{grid-column:span 3}.card.w2{grid-column:span 2}.card.w6{grid-column:span 6}
-  .card.w6.win{display:flex;gap:20px;align-items:stretch;padding:16px;background:linear-gradient(135deg,#fffcf3,#fdfbf5);border-color:#ead9ad}
-  .card.w6.win .thumb{width:320px;flex:none;aspect-ratio:auto;height:auto;margin-bottom:0;border-radius:12px}
-  .card.w6.win .win-body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:4px 4px 4px 0}
+  .card.w2.txtcard{padding-top:44px}
+  .ptag{position:absolute;top:24px;left:24px;z-index:2;pointer-events:none;font-size:11.5px;font-weight:600;letter-spacing:.02em;line-height:1.5;color:#fff;background:rgba(29,29,31,.84);backdrop-filter:blur(6px);padding:4px 10px;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.14)}
+  .ptag.ptag-ai{background:linear-gradient(135deg,#0071e3,#3aa0ff);box-shadow:0 4px 14px rgba(0,113,227,.28)}
+  .card.w6.win>.ptag{top:18px;left:20px}
+  .card.w2.txtcard>.ptag{top:18px;left:22px}
+  .card.w6.win{display:flex;gap:22px;align-items:center;padding:18px 22px;background:linear-gradient(135deg,#fffcf3,#fdfbf5);border-color:#ead9ad}
+  .card.w6.win .thumb{display:none}
+  .win-shots{display:flex;gap:10px;flex:none;align-items:center}
+  .win-shots img{height:250px;width:auto;border-radius:10px;border:1px solid var(--line);display:block;cursor:zoom-in;transition:transform .2s;box-shadow:0 8px 20px rgba(0,0,0,.06)}
+  .win-shots img:hover{transform:translateY(-3px)}
+  .card.w6.win .win-body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0}
   .badge-gold{display:inline-block;font-size:11px;font-weight:700;color:#7a5600;background:linear-gradient(135deg,#ffeeb8,#ffd76e);border:1px solid #e3c469;border-radius:999px;padding:3px 11px;margin-left:8px;vertical-align:2px;white-space:nowrap}
   .card.hl{background:linear-gradient(135deg,#f2f7ff,#fbfbfd);border-color:rgba(0,113,227,.18)}
 
@@ -174,8 +182,9 @@
     .feature:nth-of-type(even) .panel{order:-1}
     .bento{grid-template-columns:repeat(2,1fr)}
     .card.w3,.card.w2,.card.w6{grid-column:span 2}
-    .card.w6.win{flex-direction:column}
-    .card.w6.win .thumb{width:100%}
+    .card.w6.win{flex-direction:column;gap:12px;padding:14px 14px 18px}
+    .card.w6.win .thumb{display:block;width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:top;margin-bottom:0;border-radius:10px}
+    .win-shots{display:none}
     .rhero{flex-direction:column;gap:14px}
     .rhero figure{flex:none}
     .rhero figure img{aspect-ratio:16/10}
@@ -282,13 +291,13 @@
 
       <div class="feature rv">
         <div class="panel shots">
-          <figure><img src="assets/img/zbzn-zhix.webp" alt="武汉某智能科技公司 App 在线考试" loading="lazy"></figure>
-          <figure><img src="assets/img/zbzn-patrol.webp" alt="武汉某智能科技公司 App 巡店" loading="lazy"></figure>
-          <figure><img src="assets/img/zbzn-ai.webp" alt="武汉某智能科技公司 App AI 点检" loading="lazy"></figure>
+          <figure><img src="assets/img/zbzn-zhix.webp" alt="烘焙连锁 AI 运营 App 在线考试" loading="lazy"></figure>
+          <figure><img src="assets/img/zbzn-patrol.webp" alt="烘焙连锁 AI 运营 App 巡店" loading="lazy"></figure>
+          <figure><img src="assets/img/zbzn-ai.webp" alt="烘焙连锁 AI 运营 App AI 点检" loading="lazy"></figure>
         </div>
         <div>
           <span class="tag">App 从 0 到 1 · 已上架</span>
-          <h3>武汉某智能科技公司 — 烘焙连锁 AI 运营 App</h3>
+          <h3>烘焙连锁 AI 运营 App — 3 个月 iOS 上架</h3>
           <p>公司 SaaS 仅有 PC 版、无 App 先例，作为唯一具备多端上架经验的成员入职，制定上架全流程方案（软著 / 域名备案 / AI 功能审核合规），3 个月完成 iOS App Store 上架。</p>
           <ul>
             <li>主导技术选型与项目骨架（对比 uni-app x 后选定 uni-app）</li>
@@ -396,29 +405,29 @@
     <section id="more" style="padding-top:20px">
       <div class="sec-head"><h2>更多项目</h2></div>
       <div class="bento rv">
-        <div class="card w6 win pimg"><img class="thumb" src="assets/img/xuetang-6.webp" alt="倍进学堂安卓 APP" loading="lazy"><div class="win-body"><h4>倍进学堂 · 小程序 + 安卓 APP 双端<span class="badge-gold">累计营收千万级</span></h4><p>Vue2 + uni-app 全生命周期迭代 4 年：小程序端「学习星」任务体系与商城兑换闭环；安卓 APP 同步持续迭代，小米商店、应用宝等各大应用商店可搜可下。</p><div class="meta">2021.10 - 2025.03 · <a class="lnk" href="https://app.mi.com/details?id=com.beijinxuetang.beijin" target="_blank" rel="noopener">小米商店 ↗</a> · <a class="lnk" href="https://sj.qq.com/appdetail/com.beijinxuetang.beijin" target="_blank" rel="noopener">应用宝 ↗</a></div></div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/cq-1.webp" alt="倍进成长圈社区" loading="lazy"><h4>倍进成长圈 · 学习社区</h4><p>WebSocket 实时聊天、社区体系、互动玩法闭环，打通学习星商城经济。</p><div class="meta">注册用户 1000 万+ · 帖子 53 万+</div></div>
-        <div class="card w6 win pimg"><img class="thumb" src="assets/img/tbyy-1.webp" alt="同步学英语" loading="lazy"><div class="win-body"><h4>同步学英语<span class="badge-gold">累计营收千万级</span></h4><p>方直科技正版教材点读 + AI 系统学闯关路径、AI 互动学、勋章体系；主导 3 次大型界面改版，三年长期迭代支撑商业化持续增长。</p><div class="meta">2022.02 - 2025.02 · 微信小程序</div></div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/mbti-4.webp" alt="MBTI 测评报告" loading="lazy"><h4>MBTI 人格测试</h4><p>3 套专业题库 + 霍兰德职业测试，ECharts 人格维度可视化报告闭环。</p><div class="meta">2024.02 - 2025.03</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/zuowen-1.webp" alt="倍进作文" loading="lazy"><h4>倍进作文 · AI 陪练写作</h4><p>AI 五步引导写作（审题/立意/素材/框架）、智能批改纠错润色、范文库素材库。</p><div class="meta">50 万+ 学生在用</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/yuwen-1.webp" alt="小学语文同步学习助手" loading="lazy"><h4>小学语文同步学习助手</h4><p>人教统编版课文点读、朗读评测、专项课程与字帖生成工具。</p><div class="meta">点读 / 评测 / 字帖</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/ziliaoku-1.webp" alt="倍进资料库" loading="lazy"><h4>倍进资料库</h4><p>同步学习资料库：AI 生成试卷、分类资料检索、下载/上传积分体系。</p><div class="meta">语 / 数 / 英 全科</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/jiaozuoye-1.webp" alt="交作业助手" loading="lazy"><h4>交作业助手</h4><p>教师/学生双端作业管理：布置（AI 优化）、班级管理、提交率看板、友盟埋点。</p><div class="meta">2022.01 - 2022.04</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/jiayuan-1.webp" alt="倍进家校评测助手" loading="lazy"><h4>倍进家校评测助手</h4><p>基于心理学理论的亲子共测模式：66+ 专业测评工具、成长追踪可视化。</p><div class="meta">大五人格 · 成长曲线</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/airesume-1.webp" alt="AI 简历助手" loading="lazy"><h4>得优 AI 简历助手</h4><p>精选模板一键建简历，配合 Puppeteer 无头浏览器截图保证多端视觉一致。</p><div class="meta">AI 写作矩阵产品线</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/jrmall-1.webp" alt="假日小队商城小程序" loading="lazy"><h4>假日小队 · 官方商城</h4><p>H5 重构小程序：活动购买、支付与分销闭环、分包策略与请求拦截器封装。</p><div class="meta">2018 - 2021 · 亲子活动电商</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/jiari-web.webp" alt="假日小队官网 PC 版" loading="lazy"><h4>假日小队 · 企业官网</h4><p>PC + 移动端官网开发与响应式适配，上线后体验流畅获公司内部表彰。</p><div class="meta">PC 版 + 移动端 · <a class="lnk" href="https://jiarixiaodui.com" target="_blank" rel="noopener">jiarixiaodui.com ↗</a></div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/yd360-1.webp" alt="营地360官网首页" loading="lazy"><h4>营地360 · 营地教育服务平台</h4><p>面向营地教育行业的综合服务平台：课程商城（多维筛选 + VIP 价格体系）、活动报名、营地入驻申请全流程。</p><div class="meta"><a class="lnk" href="https://www.yingdi360.com" target="_blank" rel="noopener">www.yingdi360.com ↗</a></div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/jrrecruit-1.webp" alt="假日伙伴招募" loading="lazy"><h4>假日伙伴招募 H5</h4><p>营地导师招募平台移动端：活动/职位浏览、职位申请与进度跟踪。</p><div class="meta">uni-app 双端 APP 同源 · <a class="lnk" href="https://jrhb.jiarixiaodui.com/" target="_blank" rel="noopener">在线访问 ↗</a></div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/jiari-app-1.webp" alt="假日伙伴 APP" loading="lazy"><h4>假日伙伴 · 双端 APP</h4><p>uni-app 打包安卓 / iOS 双端 APP：定点打卡、任务考核与薪资结算，集个推 SDK。</p><div class="meta">已上架应用商店（2018）</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/chuti-1.webp" alt="出题答题助手首页" loading="lazy"><h4>出题答题助手</h4><p>出题/刷题双模式 + 火山引擎 AI 智能出题 + 付费题库，题库使用率提升 10%+。</p><div class="meta">2022.02 - 2022.04</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/glby-1.webp" alt="公路养护智慧管控大屏" loading="lazy"><h4>公路养护系统 ×2</h4><p>高德地图动态打点、海量点聚合、PQI/RQI 指标联动、ECharts 可视化综合管控大屏。</p><div class="meta">2021.06 - 2021.11</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/haiba-1.webp" alt="小白海拔检测仪" loading="lazy"><h4>小白海拔检测仪</h4><p>GPS + 传感器仪表盘小程序：实时海拔、经纬度、方位角、移动速度与倾角，暗色仪表 UI 与 LIVE 分享。</p><div class="meta">个人实验项目 · 审核通过已上线</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/xiutu-1.webp" alt="拇指修图" loading="lazy"><h4>拇指修图</h4><p>Canvas 图像处理小程序：多风格滤镜实时预览、强度调节、JPG/PNG 导出，「分享加次数」裂变机制。</p><div class="meta">个人实验项目 · 审核通过已上线</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/faxing-1.webp" alt="千面测发型 AI 配发师" loading="lazy"><h4>千面测发型 · AI 配发师</h4><p>腾讯云函数 + 腾讯混元生图：人脸发型 AI 试戴、前后对比海报生成；因个人主体无法申报 AI 类目，完成至体验版。</p><div class="meta">混元生图 · 云函数 · 体验版</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/ereader-2.webp" alt="EReader-MVP 桌面阅读器 2.0 首页" loading="lazy"><h4>EReader-MVP · 桌面阅读器</h4><p>Vue3 + Electron 极简电子书阅读器，首个 AI 辅助开发实践：AGENTS.md / 结构化文档驱动，展示 AI 协作开发范式。</p><div class="meta"><a class="lnk" href="https://github.com/JasonOracle/EReader-MVP" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-        <div class="card w2"><h4>agnes-2.5-flash-mcp · MCP Server</h4><p>发布到 PyPI 的 MCP 服务器：接入 Agnes 2.5-flash 图像 / 视频生成，供 Claude 等 AI Agent 标准化调用。</p><div class="meta"><a class="lnk" href="https://pypi.org/project/agnes-2.5-flash-mcp/" target="_blank" rel="noopener">PyPI ↗</a> · <a class="lnk" href="https://github.com/JasonOracle/agnes-2.5-flash-mcp" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-        <div class="card w2"><h4>Agent Skill 与 AI 内容实验</h4><p>agnes-scroll-world：一键生成「无限滚动运镜」网页的 Agent Skill（零成本 AI 生成链路）；lol-scroll-video：英雄联盟海克斯主题落地页，素材 100% AI 生成。</p><div class="meta"><a class="lnk" href="https://github.com/JasonOracle/agnes-scroll-world" target="_blank" rel="noopener">Skill ↗</a> · <a class="lnk" href="https://github.com/JasonOracle/lol-scroll-video" target="_blank" rel="noopener">Demo ↗</a></div></div>
+        <div class="card w6 win pimg"><span class="ptag">三科全覆盖</span><img class="thumb" src="assets/img/xuetang-store.webp" alt="倍进学堂应用商店页面" loading="lazy"><div class="win-body"><h4>倍进学堂 · 小程序 + 安卓 APP 双端<span class="badge-gold">累计营收千万级</span></h4><p>倍进教育王牌产品，英语 / 语文 / 数学三科学习全覆盖，功能完善；负责多次迭代升级与创意功能设计——皮肤系统、小红花积分、打卡等核心玩法均由我主导；安卓 APP 同步持续迭代，小米商店、应用宝等各大应用商店在架。</p><div class="meta">2021.10 - 2025.03 · <a class="lnk" href="https://app.mi.com/details?id=com.beijinxuetang.beijin" target="_blank" rel="noopener">小米商店 ↗</a> · <a class="lnk" href="https://sj.qq.com/appdetail/com.beijinxuetang.beijin" target="_blank" rel="noopener">应用宝 ↗</a></div></div><div class="win-shots"><img src="assets/img/xuetang-store.webp" alt="倍进学堂应用商店页面" loading="lazy"><img src="assets/img/xuetang-1.webp" alt="倍进学堂同步学" loading="lazy"><img src="assets/img/xuetang-2.webp" alt="倍进学堂 AI 智学" loading="lazy"><img src="assets/img/xuetang-3.webp" alt="倍进学堂点读课本" loading="lazy"></div></div>
+        <div class="card w6 win pimg"><span class="ptag">正版教材点读</span><img class="thumb" src="assets/img/tbyy-1.webp" alt="同步学英语" loading="lazy"><div class="win-body"><h4>同步学英语<span class="badge-gold">累计营收千万级</span></h4><p>方直科技正版教材同步点读，覆盖人教 PEP 等多版本教材，「新教材已同步」紧跟课标更新；AI 系统学闯关路径 + AI 互动学 + 勋章体系构成完整学习闭环；「邀请有礼」专属佣金与学习资料赠送驱动老带新裂变，支撑商业化转化；主导 3 次大型界面改版，三年长期迭代。</p><div class="meta">2022.02 - 2025.02 · 微信小程序</div></div><div class="win-shots"><img src="assets/img/tbyy-1.webp" alt="同步学英语首页" loading="lazy"><img src="assets/img/tbyy-2.webp" alt="同步学英语页面" loading="lazy"><img src="assets/img/tbyy-3.webp" alt="同步学英语页面" loading="lazy"><img src="assets/img/tbyy-4.webp" alt="同步学英语页面" loading="lazy"></div></div>
+        <div class="card w6 win pimg"><span class="ptag">教师/学生双端</span><img class="thumb" src="assets/img/jiaozuoye-1.webp" alt="交作业助手" loading="lazy"><div class="win-body"><h4>交作业助手<span class="badge-gold">百万级用户</span></h4><p>诞生于疫情居家时期，远程交作业需求爆发式增长；根据用户反馈多层次、快速迭代升级，累计服务百万级用户，并与多所学校达成合作。教师 / 学生双端作业管理：布置（AI 优化）、班级管理、提交率看板、友盟埋点。</p><div class="meta">2022.01 - 2022.04 · 微信小程序</div></div><div class="win-shots"><img src="assets/img/jiaozuoye-1.webp" alt="交作业助手页面" loading="lazy"><img src="assets/img/jiaozuoye-2.webp" alt="交作业助手页面" loading="lazy"><img src="assets/img/jiaozuoye-3.webp" alt="交作业助手页面" loading="lazy"><img src="assets/img/jiaozuoye-4.webp" alt="交作业助手页面" loading="lazy"></div></div>
+        <div class="card w2 pimg"><span class="ptag">Electron 桌面端</span><img class="thumb" src="assets/img/ereader-2.webp" alt="EReader-MVP 桌面阅读器 2.0 首页" loading="lazy"><h4>EReader-MVP · 桌面阅读器</h4><p>Vue3 + Electron 极简电子书阅读器，首个 AI 辅助开发实践：AGENTS.md / 结构化文档驱动，展示 AI 协作开发范式。</p><div class="meta"><a class="lnk" href="https://github.com/JasonOracle/EReader-MVP" target="_blank" rel="noopener">GitHub ↗</a></div></div>
+        <div class="card w2 pimg"><span class="ptag ptag-ai">Agent Skill</span><img class="thumb" src="assets/img/lol-scroll.webp" alt="英雄联盟海克斯主题落地页（素材 100% AI 生成）" loading="lazy"><h4>Agent Skill 与 AI 内容实验</h4><p>agnes-scroll-world：一键生成「无限滚动运镜」网页的 Agent Skill（零成本 AI 生成链路）；lol-scroll-video：英雄联盟海克斯主题落地页，素材 100% AI 生成。</p><div class="meta"><a class="lnk" href="https://github.com/JasonOracle/agnes-scroll-world" target="_blank" rel="noopener">Skill ↗</a> · <a class="lnk" href="https://github.com/JasonOracle/lol-scroll-video" target="_blank" rel="noopener">Demo ↗</a></div></div>
+        <div class="card w2 pimg"><span class="ptag ptag-ai">AI 试发型</span><img class="thumb" src="assets/img/faxing-1.webp" alt="千面测发型 AI 配发师" loading="lazy"><h4>千面测发型 · AI 配发师</h4><p>腾讯云函数 + 腾讯混元生图：人脸发型 AI 试戴、前后对比海报生成；因个人主体无法申报 AI 类目，完成至体验版。</p><div class="meta">混元生图 · 云函数 · 体验版</div></div>
+        <div class="card w2 pimg"><span class="ptag">Canvas 滤镜</span><img class="thumb" src="assets/img/xiutu-1.webp" alt="拇指修图" loading="lazy"><h4>拇指修图</h4><p>Canvas 图像处理小程序：多风格滤镜实时预览、强度调节、JPG/PNG 导出，「分享加次数」裂变机制。</p><div class="meta">个人实验项目 · 审核通过已上线</div></div>
+        <div class="card w2 pimg"><span class="ptag">GIS 可视化</span><img class="thumb" src="assets/img/glby-1.webp" alt="公路养护智慧管控大屏" loading="lazy"><h4>公路养护系统 ×2</h4><p>高德地图动态打点、海量点聚合、PQI/RQI 指标联动、ECharts 可视化综合管控大屏。</p><div class="meta">2021.06 - 2021.11</div></div>
+        <div class="card w2 pimg"><span class="ptag">实时社区</span><img class="thumb" src="assets/img/cq-1.webp" alt="倍进成长圈社区" loading="lazy"><h4>倍进成长圈 · 学习社区</h4><p>WebSocket 实时聊天、社区体系、互动玩法闭环，打通学习星商城经济。</p><div class="meta">注册用户 1000 万+ · 帖子 53 万+</div></div>
+        <div class="card w2 pimg"><span class="ptag">职业测评</span><img class="thumb" src="assets/img/mbti-4.webp" alt="MBTI 测评报告" loading="lazy"><h4>MBTI 人格测试</h4><p>3 套专业题库 + 霍兰德职业测试，ECharts 人格维度可视化报告闭环。</p><div class="meta">2024.02 - 2025.03</div></div>
+        <div class="card w2 pimg"><span class="ptag ptag-ai">AI 批改</span><img class="thumb" src="assets/img/zuowen-1.webp" alt="倍进作文" loading="lazy"><h4>倍进作文 · AI 陪练写作</h4><p>AI 五步引导写作（审题/立意/素材/框架）、智能批改纠错润色、范文库素材库。</p><div class="meta">50 万+ 学生在用</div></div>
+        <div class="card w2 pimg"><span class="ptag">朗读评测</span><img class="thumb" src="assets/img/yuwen-1.webp" alt="小学语文同步学习助手" loading="lazy"><h4>小学语文同步学习助手</h4><p>人教统编版课文点读、朗读评测、专项课程与字帖生成工具。</p><div class="meta">点读 / 评测 / 字帖</div></div>
+        <div class="card w2 pimg"><span class="ptag ptag-ai">AI 生成试卷</span><img class="thumb" src="assets/img/ziliaoku-1.webp" alt="倍进资料库" loading="lazy"><h4>倍进资料库</h4><p>同步学习资料库：AI 生成试卷、分类资料检索、下载/上传积分体系。</p><div class="meta">语 / 数 / 英 全科</div></div>
+        <div class="card w2 pimg"><span class="ptag">亲子共测</span><img class="thumb" src="assets/img/jiayuan-1.webp" alt="倍进家校评测助手" loading="lazy"><h4>倍进家校评测助手</h4><p>基于心理学理论的亲子共测模式：66+ 专业测评工具、成长追踪可视化。</p><div class="meta">大五人格 · 成长曲线</div></div>
+        <div class="card w2 pimg"><span class="ptag">Puppeteer 导出</span><img class="thumb" src="assets/img/airesume-1.webp" alt="AI 简历助手" loading="lazy"><h4>得优 AI 简历助手</h4><p>精选模板一键建简历，配合 Puppeteer 无头浏览器截图保证多端视觉一致。</p><div class="meta">AI 写作矩阵产品线</div></div>
+        <div class="card w2 pimg"><span class="ptag">支付 + 分销</span><img class="thumb" src="assets/img/jrmall-1.webp" alt="假日小队商城小程序" loading="lazy"><h4>假日小队 · 官方商城</h4><p>H5 重构小程序：活动购买、支付与分销闭环、分包策略与请求拦截器封装。</p><div class="meta">2018 - 2021 · 亲子活动电商</div></div>
+        <div class="card w2 pimg"><span class="ptag">响应式官网</span><img class="thumb" src="assets/img/jiari-web.webp" alt="假日小队官网 PC 版" loading="lazy"><h4>假日小队 · 企业官网</h4><p>PC + 移动端官网开发与响应式适配，上线后体验流畅获公司内部表彰。</p><div class="meta">PC 版 + 移动端 · <a class="lnk" href="https://jiarixiaodui.com" target="_blank" rel="noopener">jiarixiaodui.com ↗</a></div></div>
+        <div class="card w2 pimg"><span class="ptag">课程商城</span><img class="thumb" src="assets/img/yd360-1.webp" alt="营地360官网首页" loading="lazy"><h4>营地360 · 营地教育服务平台</h4><p>面向营地教育行业的综合服务平台：课程商城（多维筛选 + VIP 价格体系）、活动报名、营地入驻申请全流程。</p><div class="meta"><a class="lnk" href="https://www.yingdi360.com" target="_blank" rel="noopener">www.yingdi360.com ↗</a></div></div>
+        <div class="card w2 pimg"><span class="ptag">招募 H5</span><img class="thumb" src="assets/img/jrrecruit-1.webp" alt="假日伙伴招募" loading="lazy"><h4>假日伙伴招募 H5</h4><p>营地导师招募平台移动端：活动/职位浏览、职位申请与进度跟踪。</p><div class="meta">uni-app 双端 APP 同源 · <a class="lnk" href="https://jrhb.jiarixiaodui.com/" target="_blank" rel="noopener">在线访问 ↗</a></div></div>
+        <div class="card w2 pimg"><span class="ptag">安卓 + iOS</span><img class="thumb" src="assets/img/jiari-app-1.webp" alt="假日伙伴 APP" loading="lazy"><h4>假日伙伴 · 双端 APP</h4><p>uni-app 打包安卓 / iOS 双端 APP：定点打卡、任务考核与薪资结算，集个推 SDK。</p><div class="meta">已上架应用商店（2018）</div></div>
+        <div class="card w2 pimg"><span class="ptag ptag-ai">AI 出题</span><img class="thumb" src="assets/img/chuti-1.webp" alt="出题答题助手首页" loading="lazy"><h4>出题答题助手</h4><p>出题/刷题双模式 + 火山引擎 AI 智能出题 + 付费题库，题库使用率提升 10%+。</p><div class="meta">2022.02 - 2022.04</div></div>
+        <div class="card w2 pimg"><span class="ptag">GPS 传感仪表</span><img class="thumb" src="assets/img/haiba-1.webp" alt="小白海拔检测仪" loading="lazy"><h4>小白海拔检测仪</h4><p>GPS + 传感器仪表盘小程序：实时海拔、经纬度、方位角、移动速度与倾角，暗色仪表 UI 与 LIVE 分享。</p><div class="meta">个人实验项目 · 审核通过已上线</div></div>
+        <div class="card w2 txtcard"><span class="ptag">已发布 PyPI</span><h4>agnes-2.5-flash-mcp · MCP Server</h4><p>发布到 PyPI 的 MCP 服务器：接入 Agnes 2.5-flash 图像 / 视频生成，供 Claude 等 AI Agent 标准化调用。</p><div class="meta"><a class="lnk" href="https://pypi.org/project/agnes-2.5-flash-mcp/" target="_blank" rel="noopener">PyPI ↗</a> · <a class="lnk" href="https://github.com/JasonOracle/agnes-2.5-flash-mcp" target="_blank" rel="noopener">GitHub ↗</a></div></div>
       </div>
     </section>
 
@@ -521,8 +530,8 @@ var G={
  xiutu:{t:'拇指修图 — Canvas 图像处理小程序',i:['xiutu-1.webp']},
  faxing:{t:'千面测发型 — 腾讯云函数 + 混元生图',i:['faxing-1.webp','faxing-2.webp','faxing-3.webp']},
  glby:{t:'公路养护智慧管控大屏 ×2',i:['glby-1.webp']},
- zbzn:{t:'武汉某智能科技公司 App — iOS 从 0 到 1 上架',i:['zbzn-zhix.webp','zbzn-learn.webp','zbzn-patrol.webp','zbzn-home.webp','zbzn-ai.webp'],link:'https://apps.apple.com/cn/app/id6775407976'},
- xuetang:{t:'倍进学堂 · 小程序 + 安卓 APP 双端（累计营收千万级）',i:['xuetang-6.webp','xuetang-7.webp','xuetang-8.webp','xuetang-9.webp','xuetang-10.webp','xuetang-1.webp','xuetang-2.webp','xuetang-3.webp','xuetang-4.webp','xuetang-5.webp','xuetang-appstore.webp'],link:'https://app.mi.com/details?id=com.beijinxuetang.beijin'},
+ zbzn:{t:'烘焙连锁 AI 运营 App — 3 个月 iOS 上架',i:['zbzn-zhix.webp','zbzn-learn.webp','zbzn-patrol.webp','zbzn-home.webp','zbzn-ai.webp'],link:'https://apps.apple.com/cn/app/id6775407976'},
+ xuetang:{t:'倍进学堂 · 小程序 + 安卓 APP 双端（累计营收千万级）',i:['xuetang-store.webp','xuetang-1.webp','xuetang-2.webp','xuetang-3.webp','xuetang-4.webp','xuetang-5.webp','xuetang-appstore.webp'],link:'https://app.mi.com/details?id=com.beijinxuetang.beijin'},
  cq:{t:'倍进成长圈 · 学习社区',i:['cq-1.webp','cq-2.webp','cq-3.webp','cq-4.webp']},
  tbyy:{t:'同步学英语（累计营收千万级）',i:['tbyy-1.webp','tbyy-2.webp','tbyy-3.webp','tbyy-4.webp']},
  mbti:{t:'MBTI 人格测试助手',i:['mbti-1.webp','mbti-2.webp','mbti-3.webp','mbti-4.webp']},
@@ -543,6 +552,7 @@ var G={
  figbr:{t:'agent-design-figma — AI UI 设计 Skill（自动画进 Figma）',i:['figbr-1.webp','figbr-2.webp'],link:'https://github.com/JasonOracle/agent-design-figma'},
  bridge:{t:'figma-agent-bridge — Agent 直写 Figma 真实画布全链路',i:['bridge-3.webp','bridge-1.webp','bridge-2.webp'],link:'https://github.com/JasonOracle/figma-agent-bridge'},
  agdf:{t:'agent-design-figma — AI UI 设计 Skill（自动画进 Figma）',i:['figbr-2.webp'],link:'https://github.com/JasonOracle/agent-design-figma'},
+ lol:{t:'lol-scroll-video — 英雄联盟海克斯主题落地页（素材 100% AI 生成）',i:['lol-scroll.webp'],link:'https://github.com/JasonOracle/lol-scroll-video'},
  agbr:{t:'agent-bridge — 多智能体异步协作框架（Supervisor/Builder/Watchdog）',i:['agbr-1.webp','agbr-2.webp','agbr-3.webp'],link:'https://github.com/JasonOracle/agent-bridge'}
 };
 var KEYS=Object.keys(G).concat(['jiari-m']).sort(function(a,b){return b.length-a.length});
@@ -573,11 +583,12 @@ document.addEventListener('click',function(e){
   var card=e.target.closest('.pimg,.gcard,.mini,figure');
   if(!card)return;
   if(a&&a!==card&&card.contains(a))return;
-  var im=card.querySelector('img');if(!im)return;
+  var im=e.target.tagName==='IMG'?e.target:card.querySelector('img');
+  if(!im)return;
   var g=resolve(im.getAttribute('src'));if(!g)return;
   e.preventDefault();
   var n=0;
-  if(card.tagName==='FIGURE'){n=g.i.indexOf(im.getAttribute('src').split('/').pop());if(n<0)n=0}
+  if(e.target.tagName==='IMG'||card.tagName==='FIGURE'){n=g.i.indexOf(im.getAttribute('src').split('/').pop());if(n<0)n=0}
   open(g,n);
 });
 lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-stage'))close()});
