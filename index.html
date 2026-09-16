@@ -106,6 +106,31 @@
   .card.w3{grid-column:span 3}.card.w2{grid-column:span 2}.card.w6{grid-column:span 6}
   .card.hl{background:linear-gradient(135deg,#f2f7ff,#fbfbfd);border-color:rgba(0,113,227,.18)}
 
+  /* 近期项目 */
+  .rhero{display:flex;gap:22px;background:linear-gradient(135deg,#f2f7ff,#fbfbfd);border:1px solid rgba(0,113,227,.18);border-left:3px solid var(--accent);border-radius:var(--radius);padding:20px;margin-bottom:14px}
+  .rhero figure{flex:0 0 40%;margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff}
+  .rhero figure img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .rbody{flex:1;min-width:0}
+  .rbody h4{font-size:19px;font-weight:600;margin-bottom:6px}
+  .rbody .sub{font-size:13.5px;color:var(--ink-2);margin-bottom:12px}
+  .rpts{list-style:none;padding:0;margin:0 0 12px}
+  .rpts li{font-size:13px;color:var(--ink-2);padding-left:16px;position:relative;margin-bottom:5px;line-height:1.55}
+  .rpts li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .chips span{font-size:11.5px;color:var(--ink-2);background:rgba(0,113,227,.07);border:1px solid rgba(0,113,227,.12);border-radius:99px;padding:3px 9px;font-family:ui-monospace,Menlo,monospace}
+  .rgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .rcard{background:var(--surface);border:1px solid var(--line);border-left:3px solid #7F77DD;border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+  .rcard:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.07)}
+  .rcard figure{margin:0 0 12px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#f2f2f5}
+  .rcard figure img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block}
+  .rcard h4{font-size:16px;font-weight:600;margin-bottom:5px}
+  .rcard .sub{font-size:13px;color:var(--ink-2);margin-bottom:10px}
+  .rcard.wide{grid-column:span 2;flex-direction:row;gap:18px;align-items:flex-start}
+  .rcard.wide figure{flex:0 0 32%;margin-bottom:0}
+  .rcard.wide figure img{aspect-ratio:16/10}
+  .rcard.wide .rtext{flex:1;min-width:0}
+  .sec-note{font-size:12.5px;color:var(--ink-3);font-family:ui-monospace,Menlo,monospace}
+
   /* 时间线 */
   .tl{position:relative;margin-left:6px;padding-left:30px;border-left:1px solid var(--line)}
   .tl-item{position:relative;padding-bottom:38px}
@@ -145,6 +170,12 @@
     .feature:nth-of-type(even) .panel{order:-1}
     .bento{grid-template-columns:repeat(2,1fr)}
     .card.w3,.card.w2,.card.w6{grid-column:span 2}
+    .rhero{flex-direction:column;gap:14px}
+    .rhero figure{flex:none}
+    .rhero figure img{aspect-ratio:16/10}
+    .rgrid{grid-template-columns:1fr}
+    .rcard.wide{grid-column:span 1;flex-direction:column}
+    .rcard.wide figure{flex:none;margin-bottom:12px}
     .skills{grid-template-columns:1fr}
     .skill.ai{grid-column:span 1}
     .nav ul{display:none}
@@ -159,6 +190,7 @@
     <a class="brand" href="#top">LIU<em>·</em>YN</a>
     <ul>
       <li><a href="#works">精选作品</a></li>
+      <li><a href="#recent">近期项目</a></li>
       <li><a href="#more">更多项目</a></li>
       <li><a href="#exp">工作经历</a></li>
       <li><a href="#skills">技能</a></li>
@@ -219,28 +251,26 @@
       </div>
 
       <div class="feature rv">
-        <div class="panel shots">
-          <figure><img src="assets/img/aisvc-m1.webp" alt="AI 客服移动端首页" loading="lazy"></figure>
-          <div class="stack">
-            <figure><img src="assets/img/aisvc-tob.webp" alt="AI 客服 B 端工作台总览" loading="lazy"></figure>
-            <figure><img src="assets/img/aisvc-handoff.webp" alt="AI 转人工接管界面" loading="lazy"></figure>
-          </div>
-        </div>
         <div>
-          <span class="tag">独立开发 · 全栈 · 云端交付</span>
-          <h3>aiservice — 企业级 AI 智能客服系统</h3>
-          <p>Next.js 16 + FastAPI + TiDB Cloud 全栈闭环：多模态 Vision 识图、细粒度 RAG 检索加权、全双工 WebSocket 长连接，已上线公网可直接体验。</p>
+          <span class="tag">商业验证 · 百万营收</span>
+          <h3>倍进 AI 写作助手 — 多端 AI 应用矩阵</h3>
+          <p>基于火山引擎大模型的智能办公工具（长文 / PPT / 简历 / 会议纪要），微信 + 抖音小程序、网页版、安卓 APP 全渠道覆盖，会员制 + 按次扣费混合变现。</p>
           <ul>
-            <li>独创「AI 负责效率，人工负责责任」双层托管状态机：AI 自主应答，低置信度自动转人工接管</li>
-            <li>多模态识图：商品图片理解辅助售后应答（服饰 / 母婴 / 3C 场景）</li>
-            <li>细粒度 RAG 检索加权与多模态知识库， WebSocket 全双工会话</li>
-            <li>docker-compose 一键部署，TOC / TOB 双端分离架构</li>
+            <li>onChunkReceived 数据流逐字打印，AI 长文实时生成</li>
+            <li>PPT 生成跨端文件上传兼容方案、Puppeteer 简历截图</li>
+            <li>录音识别会议纪要 + 微信订阅提醒 + PDF 摘要</li>
+            <li>「只改 appid 打包多套程序」的分发矩阵能力</li>
           </ul>
-          <p style="margin-top:16px">
-            <a class="link-more" href="https://aiservice-toc.pages.dev" target="_blank" rel="noopener">在线体验 ↗</a>
-            &nbsp;&nbsp;
-            <a class="link-more" href="https://github.com/JasonOracle/aiservice" target="_blank" rel="noopener">源码 ↗</a>
-          </p>
+          <ul>
+            <li><span class="hl-tag">10 个月营收突破 100 万元</span></li>
+            <li><span class="hl-tag">登上央视新闻高校 AI 写作相关报道</span></li>
+            <li>代码复用率 85%+，核心功能日均使用 5000+ 次</li>
+          </ul>
+        </div>
+        <div class="panel shots">
+          <figure><img src="assets/img/aiwriter-1.webp" alt="AI 写作助手小程序首页" loading="lazy"></figure>
+          <figure><img src="assets/img/aiwriter-2.webp" alt="文件工具箱" loading="lazy"></figure>
+          <figure><img src="assets/img/aiwriter-app-1.webp" alt="安卓 APP 版首页" loading="lazy"></figure>
         </div>
       </div>
 
@@ -265,26 +295,94 @@
       </div>
 
       <div class="feature rv">
-        <div>
-          <span class="tag">商业验证 · 百万营收</span>
-          <h3>倍进 AI 写作助手 — 多端 AI 应用矩阵</h3>
-          <p>基于火山引擎大模型的智能办公工具（长文 / PPT / 简历 / 会议纪要），微信 + 抖音小程序、网页版、安卓 APP 全渠道覆盖，会员制 + 按次扣费混合变现。</p>
-          <ul>
-            <li>onChunkReceived 数据流逐字打印，AI 长文实时生成</li>
-            <li>PPT 生成跨端文件上传兼容方案、Puppeteer 简历截图</li>
-            <li>录音识别会议纪要 + 微信订阅提醒 + PDF 摘要</li>
-            <li>「只改 appid 打包多套程序」的分发矩阵能力</li>
-          </ul>
-          <ul>
-            <li><span class="hl-tag">10 个月营收突破 100 万元</span></li>
-            <li><span class="hl-tag">登上央视新闻高校 AI 写作相关报道</span></li>
-            <li>代码复用率 85%+，核心功能日均使用 5000+ 次</li>
-          </ul>
-        </div>
         <div class="panel shots">
-          <figure><img src="assets/img/aiwriter-1.webp" alt="AI 写作助手小程序首页" loading="lazy"></figure>
-          <figure><img src="assets/img/aiwriter-2.webp" alt="文件工具箱" loading="lazy"></figure>
-          <figure><img src="assets/img/aiwriter-app-1.webp" alt="安卓 APP 版首页" loading="lazy"></figure>
+          <figure><img src="assets/img/aisvc-m1.webp" alt="AI 客服移动端首页" loading="lazy"></figure>
+          <div class="stack">
+            <figure><img src="assets/img/aisvc-tob.webp" alt="AI 客服 B 端工作台总览" loading="lazy"></figure>
+            <figure><img src="assets/img/aisvc-handoff.webp" alt="AI 转人工接管界面" loading="lazy"></figure>
+          </div>
+        </div>
+        <div>
+          <span class="tag">独立开发 · 全栈 · 云端交付</span>
+          <h3>aiservice — 企业级 AI 智能客服系统</h3>
+          <p>Next.js 16 + FastAPI + TiDB Cloud 全栈闭环：多模态 Vision 识图、细粒度 RAG 检索加权、全双工 WebSocket 长连接，已上线公网可直接体验。</p>
+          <ul>
+            <li>独创「AI 负责效率，人工负责责任」双层托管状态机：AI 自主应答，低置信度自动转人工接管</li>
+            <li>多模态识图：商品图片理解辅助售后应答（服饰 / 母婴 / 3C 场景）</li>
+            <li>细粒度 RAG 检索加权与多模态知识库， WebSocket 全双工会话</li>
+            <li>docker-compose 一键部署，TOC / TOB 双端分离架构</li>
+          </ul>
+          <p style="margin-top:16px">
+            <a class="link-more" href="https://aiservice-toc.pages.dev" target="_blank" rel="noopener">在线体验 ↗</a>
+            &nbsp;&nbsp;
+            <a class="link-more" href="https://github.com/JasonOracle/aiservice" target="_blank" rel="noopener">源码 ↗</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+        <section id="recent" style="padding-top:20px">
+      <div class="sec-head"><h2>近期项目</h2><span class="sec-note">2026 · AI 工程基建</span></div>
+
+      <div class="rhero rv">
+        <figure><img src="assets/img/figbr-1.webp" alt="agent-design-figma 在 Figma 画布中自动生成的设计稿" loading="lazy"></figure>
+        <div class="rbody">
+          <h4>agent-design-figma · AI UI 设计 Skill</h4>
+          <p class="sub">一句话 → 设计定位 → 设计系统 → 自动画进 Figma → 视觉审查修复，全程零人工干预。</p>
+          <ul class="rpts">
+            <li>L0-L5 全自动流水线：中文行业语义映射（医疗 / 政务 / 教育 / 中后台），不随机、不套模板</li>
+            <li>视觉审查不达标自动修复并复检；三档运行模式诚实降级，没跑的步骤会明确说没跑</li>
+            <li>配套 QA 工具链：构建计划预检、布局审计、变异测试（防「永远 PASS 的假校验」）</li>
+            <li>零依赖本地 Bridge + Figma 插件，36 个原子操作，独立安装即用</li>
+          </ul>
+          <div class="chips"><span>AI Skill</span><span>Figma Plugin</span><span>L0-L5 Pipeline</span><span>Zero-Dependency</span></div>
+          <p><a class="link-more" href="https://github.com/JasonOracle/agent-design-figma" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </div>
+      </div>
+
+      <div class="rgrid">
+        <div class="rcard rv">
+          <figure><img src="assets/img/crossbrain-1.webp" alt="CrossBrain 知识库界面" loading="lazy"></figure>
+          <h4>CrossBrain · AI 编程记忆同步</h4>
+          <p class="sub">一处维护、四处同步：Claude Code / Codex / Antigravity / OpenCode 全覆盖。</p>
+          <ul class="rpts">
+            <li>SSOT 单一事实源 + 标记块注入协议，只改属于自己的区域</li>
+            <li>幂等同步引擎：重复执行结果一致，孤儿文件自动清理</li>
+            <li>每次同步自动 git 提交，可随时回滚；100% 本地离线</li>
+            <li>v1.0.0 已发布，118 项 Rust 测试全绿</li>
+          </ul>
+          <div class="chips"><span>Tauri</span><span>Rust</span><span>Vue3</span><span>v1.0.0</span></div>
+          <p><a class="link-more" href="https://github.com/JasonOracle/CrossBrain" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </div>
+
+        <div class="rcard rv">
+          <figure><img src="assets/img/bridge-3.webp" alt="figma-agent-bridge 生成的 SaaS 仪表盘" loading="lazy"></figure>
+          <h4>figma-agent-bridge · Agent 直写 Figma</h4>
+          <p class="sub">自建本地通道，让 AI Agent 直接读写真实 Figma 画布。</p>
+          <ul class="rpts">
+            <li>36 个原子操作，纯 Node 内置模块、零 npm 依赖</li>
+            <li>设计系统 → 整页高保真 → Vue3 + Tailwind 还原全链路</li>
+            <li>程序化像素级视觉回归：Diff 5.691% / SSIM 0.9037</li>
+            <li>真实浏览器交互回归 40 项，双语文档 + MIT 协议</li>
+          </ul>
+          <div class="chips"><span>Node</span><span>Figma Plugin</span><span>CLI</span><span>MIT</span></div>
+          <p><a class="link-more" href="https://github.com/JasonOracle/figma-agent-bridge" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </div>
+
+        <div class="rcard wide rv">
+          <figure><img src="assets/img/agbr-1.webp" alt="agent-bridge 多智能体流水线运行实况" loading="lazy"></figure>
+          <div class="rtext">
+            <h4>agent-bridge · 多智能体异步协作框架</h4>
+            <p class="sub">借鉴 Pinia 全局状态思想：把项目根目录当成唯一的全局 Store。</p>
+            <ul class="rpts">
+              <li>Supervisor（贵模型监工）/ Builder（便宜模型干活）/ Watchdog 调度三权分立状态机</li>
+              <li>原子化文件读写锁跨进程通信，绕开 Windows UAC 权限壁垒</li>
+              <li>自我续期挂起模式，破解「工具 120s 超时 vs 审查 150s」的时间轴竞态</li>
+              <li>零依赖，设计支持 <code>npx agent-bridge init</code> 一行启动</li>
+            </ul>
+            <div class="chips"><span>Zero-Dependency</span><span>State Machine</span><span>Multi-Agent</span></div>
+            <p><a class="link-more" href="https://github.com/JasonOracle/agent-bridge" target="_blank" rel="noopener">GitHub ↗</a></p>
+          </div>
         </div>
       </div>
     </section>
@@ -312,10 +410,6 @@
         <div class="card w2 pimg"><img class="thumb" src="assets/img/haiba-1.webp" alt="小白海拔检测仪" loading="lazy"><h4>小白海拔检测仪</h4><p>GPS + 传感器仪表盘小程序：实时海拔、经纬度、方位角、移动速度与倾角，暗色仪表 UI 与 LIVE 分享。</p><div class="meta">个人实验项目 · 审核通过已上线</div></div>
         <div class="card w2 pimg"><img class="thumb" src="assets/img/xiutu-1.webp" alt="拇指修图" loading="lazy"><h4>拇指修图</h4><p>Canvas 图像处理小程序：多风格滤镜实时预览、强度调节、JPG/PNG 导出，「分享加次数」裂变机制。</p><div class="meta">个人实验项目 · 审核通过已上线</div></div>
         <div class="card w2 pimg"><img class="thumb" src="assets/img/faxing-1.webp" alt="千面测发型 AI 配发师" loading="lazy"><h4>千面测发型 · AI 配发师</h4><p>腾讯云函数 + 腾讯混元生图：人脸发型 AI 试戴、前后对比海报生成；因个人主体无法申报 AI 类目，完成至体验版。</p><div class="meta">混元生图 · 云函数 · 体验版</div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/crossbrain-1.webp" alt="CrossBrain 知识库界面" loading="lazy"><h4>CrossBrain · AI 编程记忆同步</h4><p>Tauri + Rust 桌面应用：AI 编程偏好「一处维护、四处同步」——SSOT 单一事实源 + 标记块注入协议 + 幂等同步引擎，Claude Code / Codex / Antigravity / OpenCode 全接入，v1.0.0 已发布，118 项 Rust 测试全绿。</p><div class="meta">Tauri · Rust · Vue3 · <a class="lnk" href="https://github.com/JasonOracle/CrossBrain" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/figbr-1.webp" alt="Agent 直写 Figma 真实画布" loading="lazy"><h4>figma-agent-bridge · Agent 直写 Figma</h4><p>自建本地通道让 AI Agent 直接读写真实 Figma 画布：设计系统 → 整页高保真 → Vue3 还原 → 像素级视觉回归（Diff 5.691% / SSIM 0.9037），36 个原子操作，零依赖，双语发布。</p><div class="meta">Node 零依赖 · Figma Plugin · <a class="lnk" href="https://github.com/JasonOracle/figma-agent-bridge" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/figbr-2.webp" alt="agent-design-figma 自动生成的页面" loading="lazy"><h4>agent-design-figma · AI UI 设计 Skill</h4><p>从 bridge 提炼的设计流水线：一句话 → 设计定位 → 设计系统 → 自动画进 Figma → 视觉审查修复，L0-L5 全自动，不达标自动复检；支持中文名行业语义映射。</p><div class="meta">AI Skill · L0-L5 Pipeline · <a class="lnk" href="https://github.com/JasonOracle/agent-design-figma" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-        <div class="card w2 pimg"><img class="thumb" src="assets/img/agbr-1.webp" alt="agent-bridge 多智能体流水线运行实况" loading="lazy"><h4>agent-bridge · 多智能体协作框架</h4><p>借鉴 Pinia 全局状态思想的异步协作框架：项目根目录当 Store，Supervisor（贵模型监工）/ Builder（便宜模型干活）/ Watchdog 调度三权分立，全自动零人工干预。</p><div class="meta">Zero-Dependency · State Machine · <a class="lnk" href="https://github.com/JasonOracle/agent-bridge" target="_blank" rel="noopener">GitHub ↗</a></div></div>
         <div class="card w2 pimg"><img class="thumb" src="assets/img/ereader-2.webp" alt="EReader-MVP 桌面阅读器 2.0 首页" loading="lazy"><h4>EReader-MVP · 桌面阅读器</h4><p>Vue3 + Electron 极简电子书阅读器，首个 AI 辅助开发实践：AGENTS.md / 结构化文档驱动，展示 AI 协作开发范式。</p><div class="meta"><a class="lnk" href="https://github.com/JasonOracle/EReader-MVP" target="_blank" rel="noopener">GitHub ↗</a></div></div>
         <div class="card w2"><h4>agnes-2.5-flash-mcp · MCP Server</h4><p>发布到 PyPI 的 MCP 服务器：接入 Agnes 2.5-flash 图像 / 视频生成，供 Claude 等 AI Agent 标准化调用。</p><div class="meta"><a class="lnk" href="https://pypi.org/project/agnes-2.5-flash-mcp/" target="_blank" rel="noopener">PyPI ↗</a> · <a class="lnk" href="https://github.com/JasonOracle/agnes-2.5-flash-mcp" target="_blank" rel="noopener">GitHub ↗</a></div></div>
         <div class="card w2"><h4>Agent Skill 与 AI 内容实验</h4><p>agnes-scroll-world：一键生成「无限滚动运镜」网页的 Agent Skill（零成本 AI 生成链路）；lol-scroll-video：英雄联盟海克斯主题落地页，素材 100% AI 生成。</p><div class="meta"><a class="lnk" href="https://github.com/JasonOracle/agnes-scroll-world" target="_blank" rel="noopener">Skill ↗</a> · <a class="lnk" href="https://github.com/JasonOracle/lol-scroll-video" target="_blank" rel="noopener">Demo ↗</a></div></div>
@@ -440,7 +534,8 @@ var G={
  chuti:{t:'出题答题助手 — 火山引擎 AI 出题 · 出题/刷题双模式小程序',i:['chuti-1.webp','chuti-2.webp','chuti-3.webp','chuti-4.webp','chuti-5.webp','chuti-6.webp']},
  ereader:{t:'EReader-MVP — Vue3 + Electron 桌面阅读器（AI 辅助开发实践）',i:['ereader-2.webp','ereader-3.webp','ereader-1.webp'],link:'https://github.com/JasonOracle/EReader-MVP'},
  crossbrain:{t:'CrossBrain — AI 编程记忆同步（Tauri + Rust）',i:['crossbrain-1.webp','crossbrain-2.webp','crossbrain-3.webp'],link:'https://github.com/JasonOracle/CrossBrain'},
- figbr:{t:'figma-agent-bridge — Agent 直写 Figma 真实画布全链路',i:['figbr-1.webp','figbr-3.webp'],link:'https://github.com/JasonOracle/figma-agent-bridge'},
+ figbr:{t:'agent-design-figma — AI UI 设计 Skill（自动画进 Figma）',i:['figbr-1.webp','figbr-2.webp'],link:'https://github.com/JasonOracle/agent-design-figma'},
+ bridge:{t:'figma-agent-bridge — Agent 直写 Figma 真实画布全链路',i:['bridge-3.webp','bridge-1.webp','bridge-2.webp'],link:'https://github.com/JasonOracle/figma-agent-bridge'},
  agdf:{t:'agent-design-figma — AI UI 设计 Skill（自动画进 Figma）',i:['figbr-2.webp'],link:'https://github.com/JasonOracle/agent-design-figma'},
  agbr:{t:'agent-bridge — 多智能体异步协作框架（Supervisor/Builder/Watchdog）',i:['agbr-1.webp','agbr-2.webp','agbr-3.webp'],link:'https://github.com/JasonOracle/agent-bridge'}
 };
