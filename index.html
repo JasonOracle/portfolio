@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <!--
   [变更日志]
+  修改时间：2026-09-17
+  AI模型：CodeBuddy / GLM
+  修改内容：近期项目板块新增 agent-project-map 卡片（补齐 .rgrid 第三行右侧空位）：项目地图 + 六层断言守护 Skill；配图取自该仓库 docs 真实产出截图（转 webp：agentmap-1/2.webp）；lightbox 脚本注册 agentmap 分组
+-->
+<!--
+  [变更日志]
   修改时间：2026-09-16
   AI模型：CodeBuddy / GLM
   修改内容：1. 「近期项目」模块样式优化：.rhero 去厚重左色条改为浅蓝渐变底 + hover 浮起；.rcard 移除紫色左边条(#7F77DD)统一回主色 #0071e3，hover 收敛为浮起 + tint 阴影 + 边框变色；卡片图像 hover 微缩放；GitHub 链接推齐卡片底部；补充 prefers-reduced-motion 静态兜底（方案先在 copy.html 验证后合入）
@@ -420,6 +426,22 @@
             <p><a class="link-more" href="https://github.com/JasonOracle/agent-bridge" target="_blank" rel="noopener">GitHub ↗</a></p>
           </div>
         </div>
+
+        <div class="rcard wide rv">
+          <figure><img src="assets/img/agentmap-1.webp" alt="agent-project-map 生成的项目地图与六层断言" loading="lazy"></figure>
+          <div class="rtext">
+            <h4>agent-project-map · 项目地图生成 Skill</h4>
+            <p class="sub">项目地图 + 六层断言守护：AI 秒定位目录职责 / 启动路由 / 部署真相 / 历史陷阱。</p>
+            <ul class="rpts">
+              <li>可测试的文档：map-paths 清单块 + 自检脚本，目录删了、地图超 150 行、准则文件丢失接入规则——全部红灯</li>
+              <li>卖语义不卖结构：只记「在哪、什么任务去哪」，严禁贴文件树与复制配置，拒绝制造第二事实源</li>
+              <li>权威分层防幻觉：结构以文件系统为准（机器校验），语义由人守护，过时只降效不成幻觉源</li>
+              <li>双运行时自检：Python 权威主版 + Node 兼容镜像，六层断言功能等价</li>
+            </ul>
+            <div class="chips"><span>AI Skill</span><span>6-Layer Assertions</span><span>Anti-Hallucination</span><span>MIT</span></div>
+            <p><a class="link-more" href="https://github.com/JasonOracle/agent-project-map" target="_blank" rel="noopener">GitHub ↗</a></p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -574,7 +596,8 @@ var G={
  bridge:{t:'figma-agent-bridge — Agent 直写 Figma 真实画布全链路',i:['bridge-3.webp','bridge-1.webp','bridge-2.webp'],link:'https://github.com/JasonOracle/figma-agent-bridge'},
  agdf:{t:'agent-design-figma — AI UI 设计 Skill（自动画进 Figma）',i:['figbr-2.webp'],link:'https://github.com/JasonOracle/agent-design-figma'},
  lol:{t:'lol-scroll-video — 英雄联盟海克斯主题落地页（素材 100% AI 生成）',i:['lol-scroll.webp'],link:'https://github.com/JasonOracle/lol-scroll-video'},
- agbr:{t:'agent-bridge — 多智能体异步协作框架（Supervisor/Builder/Watchdog）',i:['agbr-1.webp','agbr-2.webp','agbr-3.webp'],link:'https://github.com/JasonOracle/agent-bridge'}
+ agbr:{t:'agent-bridge — 多智能体异步协作框架（Supervisor/Builder/Watchdog）',i:['agbr-1.webp','agbr-2.webp','agbr-3.webp'],link:'https://github.com/JasonOracle/agent-bridge'},
+ agentmap:{t:'agent-project-map — 项目地图 + 六层断言守护 Skill',i:['agentmap-1.webp','agentmap-2.webp'],link:'https://github.com/JasonOracle/agent-project-map'}
 };
 var KEYS=Object.keys(G).concat(['jiari-m']).sort(function(a,b){return b.length-a.length});
 var lb=document.getElementById('lb'),img=document.getElementById('lb-img'),
