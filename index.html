@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <!--
   [变更日志]
+  修改时间：2026-10-14
+  AI模型：CodeBuddy
+  修改内容：「精选作品」新增第 5 案「轻律生活 EasyLife — uni-app x 三端同构卡路里 App」（Vibe Coding 实战），素材取自本地 D:\project\other-porject\kaluli\docs\screenshots（未走线上拉取）。具体改动：
+    1. 新增 CSS：.panel.quad —— 2×2 四宫格手机截图网格，img 固定 aspect-ratio 9/16 且 object-position:top，保证竖屏不裁切；figure hover 微缩放 1.04；.qtag 左下角等宽小标签（标注端与页面角色）；已同步 820px 断点间距与 prefers-reduced-motion 静态兜底
+    2. #works 区新增 .feature 块：tag「Vibe Coding · 一套代码三端」/ 5 条技术要点（Canvas 2D 双模强迫阻尼振荡器 34 段表面路径 / 三主题×亮暗 20 token 行内 :style 绑定 / 347 条食物库 6 store / 真机 7 组 A/B 完整播出率 8%→100% / 五份 ADR + 五道提交闸门）+ 双链接（Web H5 在线体验 + GitHub 源码）
+    3. lightbox 注册 ely 图组（4 张 ely-*.webp，link 指向 easylife-c7x.pages.dev）；多图角标白名单补 .panel.quad figure，否则 4 图不显示「N 图」提示
+    4. Hero lead 插入「用 Vibe Coding 方式从 0 到 1 打磨出三端同构的卡路里 App「轻律生活」」
+    5. 技能栈「跨端与上架」补 uni-app x（UTS + Vapor 原生渲染）三端同构实战，并加粗标记
+    6. 素材：assets/img/ 新增 ely-1~4.webp（ffmpeg libwebp q=82，132KB 合计，占整站 4MB 的 3.3%）
+    文案口径：营养数据表述为「347 条内置食物库」，不写准确性——仓库 README 已自述为 AI 初稿 + 脚本配平、未经权威来源逐项核对
+-->
+<!--
+  [变更日志]
   修改时间：2026-09-17
   AI模型：CodeBuddy / GLM
   修改内容：近期项目板块新增 agent-project-map 卡片（补齐 .rgrid 第三行右侧空位）：项目地图 + 六层断言守护 Skill；配图取自该仓库 docs 真实产出截图（转 webp：agentmap-1/2.webp）；lightbox 脚本注册 agentmap 分组
@@ -111,6 +124,13 @@
   .panel.shots.wide figure{flex:1 1 46%}
   .panel.shots.wide img{aspect-ratio:16/10;object-fit:cover}
 
+  /* 四宫格手机截图（2×2，保留 9:16 竖屏比例不裁切） */
+  .panel.quad{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .panel.quad figure{position:relative;margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 14px 34px rgba(0,0,0,.1);background:#fff}
+  .panel.quad img{width:100%;aspect-ratio:9/16;object-fit:cover;object-position:top;display:block;transition:transform .5s ease}
+  .panel.quad figure:hover img{transform:scale(1.04)}
+  .panel.quad .qtag{position:absolute;bottom:10px;left:10px;z-index:2;font-size:11px;font-weight:500;font-family:ui-monospace,Menlo,monospace;color:#fff;background:rgba(29,29,31,.72);backdrop-filter:blur(6px);padding:3px 8px;border-radius:7px;white-space:nowrap;pointer-events:none}
+
   /* 更多项目 bento */
   .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
   .card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:22px;transition:transform .2s,box-shadow .2s}
@@ -203,6 +223,7 @@
     .stats div:nth-child(3){border-left:none;padding-left:0}
     .feature,.feature:nth-of-type(even){grid-template-columns:1fr;gap:26px}
     .feature:nth-of-type(even) .panel{order:-1}
+    .panel.quad{gap:10px}
     .bento{grid-template-columns:repeat(2,1fr)}
     .card.w3,.card.w2,.card.w6{grid-column:span 2}
     .card.w6.win{flex-direction:column;gap:12px;padding:14px 14px 18px}
@@ -219,8 +240,8 @@
     .nav ul{display:none}
   }
   @media (prefers-reduced-motion: reduce){
-    .rhero,.rcard,.rhero figure img,.rcard figure img,.chips span{transition:none}
-    .rhero:hover,.rcard:hover{transform:none}
+    .rhero,.rcard,.rhero figure img,.rcard figure img,.chips span,.panel.quad img{transition:none}
+    .rhero:hover,.rcard:hover,.panel.quad figure:hover img{transform:none}
   }
 </style>
 </head>
@@ -246,7 +267,7 @@
     <div class="hero">
       <div class="kicker">Frontend Engineer · AI-Native Full-stack · Wuhan</div>
       <h1>把 AI 做进产品里，<br><span class="thin">而不只是挂在嘴边。</span></h1>
-      <p class="lead">Jason，9 年前端，专注 AI Agent / MCP 生态与企业级全栈架构。做过 10 个月营收百万的 AI 写作小程序，3 个月把一个 SaaS 系统从 PC 版带到 iOS 上架，并独立交付了两套云端全栈作品——AI 测评 SaaS「智题库」与 AI 智能客服「aiservice」，并开源一组 AI 工程基建：AI 编程记忆同步桌面应用 CrossBrain、Agent 直写 Figma 全链路 figma-agent-bridge 等。</p>
+      <p class="lead">Jason，9 年前端，专注 AI Agent / MCP 生态与企业级全栈架构。做过 10 个月营收百万的 AI 写作小程序，3 个月把一个 SaaS 系统从 PC 版带到 iOS 上架，并独立交付了两套云端全栈作品——AI 测评 SaaS「智题库」与 AI 智能客服「aiservice」，用 Vibe Coding 方式从 0 到 1 打磨出三端同构的卡路里 App「轻律生活」，同时开源一组 AI 工程基建：AI 编程记忆同步桌面应用 CrossBrain、Agent 直写 Figma 全链路 figma-agent-bridge 等。</p>
       <div class="cta-row">
         <a class="btn primary" href="https://tiku-toc-new.pages.dev/#/" target="_blank" rel="noopener">在线体验 · 智题库</a>
         <a class="btn ghost" href="https://github.com/JasonOracle" target="_blank" rel="noopener">GitHub ↗</a>
@@ -359,6 +380,32 @@
             &nbsp;&nbsp;
             <a class="link-more" href="https://github.com/JasonOracle/aiservice" target="_blank" rel="noopener">源码 ↗</a>
           </p>
+        </div>
+      </div>
+
+      <div class="feature rv">
+        <div>
+          <span class="tag">Vibe Coding · 一套代码三端</span>
+          <h3>轻律生活 EasyLife — Android / 小程序 / Web 三端同构</h3>
+          <p>uni-app x 卡路里记录 App，约 1.2 万行 .uvue/.ts 一套源码编译三端：Android 走 Vapor 原生渲染，微信小程序与 Web H5 同步可用。数据全部本地存储，不注册不联网。Vibe Coding 实战——从 PRD、DesignTokens、可点击原型到真机像素级验收全链路自己跑通。</p>
+          <ul>
+            <li>首页水瓶是 Canvas 2D 实时物理模拟：双模强迫阻尼振荡器（cos(πu) T=460ms ζ=0.14 叠加 sin(4πu+φ) 0.955 衰减），34 段表面路径 + 气泡池 + 粒子池，dt 归一化保证不同帧率下手感一致</li>
+            <li>三主题（薄荷 / 海洋 / 薰衣草）× 亮暗 = 20 个角色 token；原生端无可靠 CSS 变量通道，改为逐元素行内 :style 绑定——图标、贴纸、液体渐变、玻璃胶囊一并随动</li>
+            <li>347 条内置食物库 + 6 个 Pinia store + 8 条路由；超标用琥珀与珊瑚而非红色，红色留给报错</li>
+            <li>真机取证式排障：音效丢音做 7 组同口径 A/B + 双向证伪，完整播出率 8% → 100%，并推翻「换更短音效」等 3 个错误假设；差量编译假绿以 bytes mtime 为判据破解</li>
+            <li>五份 ADR 记录架构决策，Python 提交闸门五道校验；踩坑实录按「症状→根因→解法→落点」组织</li>
+          </ul>
+          <p style="margin-top:16px">
+            <a class="link-more" href="https://easylife-c7x.pages.dev" target="_blank" rel="noopener">在线体验 · Web H5 ↗</a>
+            &nbsp;&nbsp;
+            <a class="link-more" href="https://github.com/JasonOracle/easy-life" target="_blank" rel="noopener">源码 ↗</a>
+          </p>
+        </div>
+        <div class="panel quad">
+          <figure><img src="assets/img/ely-1.webp" alt="轻律生活首页：巨型水瓶水位即今日摄入占比" loading="lazy"><span class="qtag">Android · 首页</span></figure>
+          <figure><img src="assets/img/ely-2.webp" alt="添加食物后水位实时上涨、剩余热量同步减少" loading="lazy"><span class="qtag">水位上涨反馈</span></figure>
+          <figure><img src="assets/img/ely-3.webp" alt="日历：每日带达标色点，区分达标与超标" loading="lazy"><span class="qtag">日历达标色点</span></figure>
+          <figure><img src="assets/img/ely-4.webp" alt="小程序端独有的食物百科页，含营养点评" loading="lazy"><span class="qtag">小程序 · 食物百科</span></figure>
         </div>
       </div>
     </section>
@@ -510,7 +557,7 @@
       <div class="skills rv">
         <div class="skill ai"><h4><i></i>AI 工程化（当前主线）</h4><p>具备 AI 时代产品从 0 到 1 的完整搭建能力：大模型 API 集成（DeepSeek/GML）、流式输出（SSE / onChunkReceived）、RAG 命题链路、AI 阅卷与评分引擎；熟练使用 Claude Code / Codex / Antigravity IDE 等 Agent 工作流，会装 Skill、也能开发 Skill 与 MCP；本地模型部署（Ollama 下载部署运行开源模型）；Hermes Agent 自托管（Debian + Docker + 微信 Bot + mem0 记忆），并用 Obsidian 搭建个人知识库驱动日常学习。</p></div>
         <div class="skill"><h4><i></i>前端核心</h4><p>计算机科班出身（大学 Java 方向，初级到中级），毕业后转向前端：HTML5 / CSS3 / JavaScript / jQuery 扎实，日常主力 Vue2 / Vue3 全家桶（Vuex · Pinia · Router · Vite）熟练使用；Next.js 16 (App Router) 有全栈项目实战（AI 客服系统）；React 系统自学过，暂无独立生产项目实战；关注性能优化（首屏、分包、缓存、字体子集化）。</p></div>
-        <div class="skill"><h4><i></i>跨端与上架</h4><p>uni-app 多端深度实战：经常开发微信小程序，上架过抖音小程序与安卓 APP；H5 公众号开发，接口支付 / 微信支付闭环有实战经验；App 上架全流程亲历者：软著申请、域名注册、应用商店注册，以及多次被打回再提审的完整实战经验；自学过快应用并完成提审（未过审，后搁置）。</p></div>
+        <div class="skill"><h4><i></i>跨端与上架</h4><p>uni-app 深度实战：经常开发微信小程序，上架过抖音小程序与安卓 APP；<b>uni-app x（UTS + Vapor 原生渲染）三端同构实战</b>——约 1.2 万行 .uvue 一套源码编译 Android / 微信小程序 / Web H5；H5 公众号开发，接口支付 / 微信支付闭环有实战经验；App 上架全流程亲历者：软著申请、域名注册、应用商店注册，以及多次被打回再提审的完整实战经验；自学过快应用并完成提审（未过审，后搁置）。</p></div>
         <div class="skill"><h4><i></i>UI 与可视化</h4><p>数据大屏与可视化项目经验：ECharts 各类图表展示与指标联动、高德地图 API 接入（动态标点、海量点聚合）；Vant / uView / Element Plus / Ant Design Vue 组件库；复杂表单与移动端手势适配。</p></div>
         <div class="skill"><h4><i></i>后端与工程</h4><p>Node.js + Express（自学）：经常使用，会连接数据库独立写接口；FastAPI 实战（智题库 / AI 客服双项目）；Python 了解基础，会用 Ollama 部署本地模型；Linux 基础使用：自托管 Debian 主机，跑 Hermes 私人助手与小型项目；Git / SVN、Docker 部署与 docker-compose 编排。</p></div>
       </div>
@@ -597,7 +644,8 @@ var G={
  agdf:{t:'agent-design-figma — AI UI 设计 Skill（自动画进 Figma）',i:['figbr-2.webp'],link:'https://github.com/JasonOracle/agent-design-figma'},
  lol:{t:'lol-scroll-video — 英雄联盟海克斯主题落地页（素材 100% AI 生成）',i:['lol-scroll.webp'],link:'https://github.com/JasonOracle/lol-scroll-video'},
  agbr:{t:'agent-bridge — 多智能体异步协作框架（Supervisor/Builder/Watchdog）',i:['agbr-1.webp','agbr-2.webp','agbr-3.webp'],link:'https://github.com/JasonOracle/agent-bridge'},
- agentmap:{t:'agent-project-map — 项目地图 + 六层断言守护 Skill',i:['agentmap-1.webp','agentmap-2.webp'],link:'https://github.com/JasonOracle/agent-project-map'}
+ agentmap:{t:'agent-project-map — 项目地图 + 六层断言守护 Skill',i:['agentmap-1.webp','agentmap-2.webp'],link:'https://github.com/JasonOracle/agent-project-map'},
+ ely:{t:'轻律生活 EasyLife — uni-app x 三端同构卡路里 App（Vibe Coding 实战）',i:['ely-1.webp','ely-2.webp','ely-3.webp','ely-4.webp'],link:'https://easylife-c7x.pages.dev'}
 };
 var KEYS=Object.keys(G).concat(['jiari-m']).sort(function(a,b){return b.length-a.length});
 var lb=document.getElementById('lb'),img=document.getElementById('lb-img'),
@@ -648,7 +696,7 @@ document.addEventListener('keydown',function(e){
 var tx=0;
 lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
 lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)show(idx+(dx<0?1:-1))},{passive:true});
-document.querySelectorAll('.pimg,.gcard,.mini').forEach(function(c){
+document.querySelectorAll('.pimg,.gcard,.mini,.panel.quad figure').forEach(function(c){
   var im=c.querySelector('img');if(!im)return;
   var g=resolve(im.getAttribute('src'));if(!g||g.i.length<2)return;
   var b=document.createElement('span');b.className='lb-badge';b.textContent=g.i.length+' 图';c.appendChild(b);

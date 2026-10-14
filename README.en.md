@@ -11,13 +11,12 @@ Personal portfolio of a frontend engineer with 9 years of experience, now workin
 | File | Description |
 |------|-------------|
 | `index.html` | Main page — light theme (titanium-cool white + large-type layout, accent `#0071e3`) |
-| `copy.html` | Style experiment draft for the "Recent Projects" section (paired with `copy.md`; verified and merged into the main page, safe to delete) |
-| `assets/img/` | All screenshots in WebP, ~3MB for the entire site |
+| `assets/img/` | All screenshots in WebP, ~4MB for the entire site |
 
 ## Sections
 
 - **Hero + Stats Bar**: 9 years of experience / ¥1M+ revenue / 10+ launched apps / 2 independent full-stack deliveries
-- **Featured Work**: 4 key case studies (TiKu — three-end AI assessment SaaS, AI writing assistant matrix, bakery-chain AI operations App, AI customer-service system), asymmetric text-and-image layout
+- **Featured Work**: 5 key case studies (TiKu — three-end AI assessment SaaS, AI writing assistant matrix, bakery-chain AI operations App, AI customer-service system, EasyLife — three-end calorie-tracking App built with Vibe Coding), asymmetric text-and-image layout
 - **Recent Projects**: AI engineering infrastructure ×4 (agent-design-figma / CrossBrain / figma-agent-bridge / agent-bridge)
 - **More Projects**: 20+ project card wall (bento grid, incl. 3 products with ¥10M+ revenue or 1M+ users)
 - **Skills**: five-card layout with honest tiering — "proficient / self-taught / no production experience yet"
